@@ -1,9 +1,5 @@
 @import 'src/styles/abstract/colors';
 
-$iphone-11-placeholder-width: 414px;
-// $iphone-11-placeholder-height: 896px;
-$iphone-11-placeholder-height: 100vh;
-
 .app {
   height: 100vh;
 
@@ -12,14 +8,14 @@ $iphone-11-placeholder-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
-    width: $iphone-11-placeholder-width;
-    height: $iphone-11-placeholder-height;
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient($black, $background-black);
   }
 
   .footer {
     position: fixed;
     bottom: 0;
-    width: $iphone-11-placeholder-width;
+    width: 100vw;
   }
 }
