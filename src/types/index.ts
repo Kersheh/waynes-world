@@ -1,5 +1,6 @@
 import { RootState as RootReducerState } from 'store/reducers';
 
+export * from './app';
 export * from './library';
 
 export type RootState = RootReducerState;

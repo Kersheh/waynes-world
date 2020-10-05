@@ -1,0 +1,32 @@
+@import 'src/styles/abstract/colors';
+
+.button {
+  color: $white;
+  background-color: transparent;
+  border: none;
+  user-select: none;
+  outline: none;
+  transition: transform .3s;
+  // -webkit-transition: transform .3s;
+  // -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(.95);
+    // -webkit-tap-transform: transform scale(.95);
+    transition: transform .3s;
+    // -webkit-transition: .3s;
+  }
+
+  &.text {
+    font-weight: 600;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}

@@ -2,11 +2,12 @@
 
 html {
   scroll-behavior: smooth;
+  user-select: none;
 }
 
 body {
-  color: $primary-black;
-  background-color: $white;
+  color: $white;
+  background-color: $black;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -14,4 +15,38 @@ body {
   font-family: 'myriad-pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  color: $white;
+  font-size: 1.7rem;
+  line-height: 1.9rem;
+  font-weight: 700;
+  margin: 1rem 0 1.5rem;
+}
+
+h2 {
+  color: $white;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  font-weight: 600;
+  margin: 1rem 0 1.3rem;
+}
+
+h3 {
+  color: $white;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  margin: 1rem 0 1.3rem;
+}
+
+p {
+  line-height: 1.2rem;
+  margin: 1rem 0 1.3rem;
+}
+
+div,
+span {
+  line-height: 1.2rem;
 }

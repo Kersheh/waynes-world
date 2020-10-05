@@ -1,12 +1,12 @@
-import { Action } from 'types';
+import { Action, View } from 'types';
 import appActions from './appActions';
 
 export interface LibraryState {
-  activeView: string;
+  activeView: View;
 }
 
 const initialState: LibraryState = {
-  activeView: ''
+  activeView: 'home'
 };
 
 const appReducer = (state = initialState, action: Action) => {

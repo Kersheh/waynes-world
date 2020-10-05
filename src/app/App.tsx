@@ -16,11 +16,13 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <div className={styles.app}>
+          <NavHeader />
+
           <div className={styles.layout}>
-            <NavHeader />
-
             <ContentView />
+          </div>
 
+          <div className={styles.footer}>
             <NavFooter />
           </div>
         </div>

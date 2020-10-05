@@ -1,5 +1,7 @@
 # Wayne's World (Digital Record Collection Library)
 
+Gift to my parents to organize their massive record collection, name inspired by my late great uncle Wayne. An iPhone 11 targeted digital record collection library web app.
+
 # Scripts:
 
 ### `npm start`

@@ -1,12 +1,12 @@
 import { ActionCreator } from 'redux';
 
-import { Action } from 'types';
+import { Action, View } from 'types';
 
 enum appActions {
   SET_ACTIVE_VIEW = 'SET_ACTIVE_VIEW'
 }
 
-export const setActiveViewAction: ActionCreator<Action> = (data: string) => {
+export const setActiveViewAction: ActionCreator<Action> = (data: View) => {
   return {
     type: appActions.SET_ACTIVE_VIEW,
     data
