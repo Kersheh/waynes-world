@@ -6,8 +6,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' --fix"
+    "lint": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' && stylelint --config .stylelintrc.yml 'src/**/*.scss'",
+    "lint:fix": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' --fix && stylelint --fix --config .stylelintrc.yml 'src/**/*.scss'"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -46,7 +46,9 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-sass-guidelines": "^7.1.0"
   },
   "eslintConfig": {
     "extends": "react-app"

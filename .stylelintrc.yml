@@ -1,0 +1,11 @@
+---
+  extends:
+    - stylelint-config-sass-guidelines
+  ignoreFiles:
+    - src/styles/normalize.scss
+  rules:
+    order/properties-alphabetical-order: null
+    selector-class-pattern: null
+    max-nesting-depth:
+      - 6
+    selector-max-compound-selectors: null
