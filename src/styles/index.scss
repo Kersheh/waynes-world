@@ -1,0 +1,17 @@
+@import 'src/styles/abstract/colors';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $primary-black;
+  background-color: $white;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6rem;
+  font-family: 'myriad-pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

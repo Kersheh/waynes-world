@@ -1,0 +1,15 @@
+@import 'src/styles/abstract/colors';
+
+.app {
+  height: 100vh;
+
+  .layout {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 414px;
+    height: 896px;
+    background-color: $primary-light-grey;
+  }
+}
