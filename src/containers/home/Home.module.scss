@@ -1,3 +1,20 @@
-.home {
+@import 'src/styles/abstract/mixins';
 
+.home {
+  @include view-margin;
+
+  .albumScroll {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 -1.8rem;
+
+    > button {
+      margin-left: 2rem;
+    }
+
+    > button:last-of-type {
+      padding-right: 2rem;
+    }
+  }
 }

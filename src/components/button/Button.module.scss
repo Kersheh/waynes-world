@@ -25,4 +25,17 @@
   &.fullWidth {
     width: 100%;
   }
+
+  &.album {
+    display: inherit;
+    text-align: start;
+    padding: 0;
+    margin: 0;
+
+    &:active {
+      -webkit-tap-highlight-color: transparent;
+      transform: scale(0.97);
+      transition: transform 0.3s;
+    }
+  }
 }

@@ -10,7 +10,7 @@ export interface ButtonProps {
   name?: 'string;';
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  styleType?: 'text' | 'fullWidth';
+  styleType?: 'text' | 'fullWidth' | 'album';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 const Button = ({
@@ -30,7 +30,8 @@ const Button = ({
       className={cx({
         button: true,
         text: styleType === 'text',
-        fullWidth: styleType === 'fullWidth'
+        fullWidth: styleType === 'fullWidth',
+        album: styleType === 'album'
       })}
       onTouchStart={() => {}}
     >

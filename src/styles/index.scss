@@ -50,3 +50,7 @@ div,
 span {
   line-height: 1.2rem;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
