@@ -11,7 +11,13 @@ const combinedReducer = combineReducers({
 
 export type RootState = ReturnType<typeof combinedReducer>;
 
-const rootReducer = (state: RootState, action: Action) =>
-  combinedReducer(state, action);
+const rootReducer = (state: RootState, action: Action) => {
+  switch (action.type) {
+    case 'PURGE':
+      return combinedReducer(undefined, action);
+    default:
+      return combinedReducer(state, action);
+  }
+};
 
 export default rootReducer;

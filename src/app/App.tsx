@@ -1,21 +1,30 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { useSelector, Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { RootState } from 'types';
 import configureStore from 'store';
 import NavHeader from 'components/navHeader/NavHeader';
 import NavFooter from 'components/navFooter/NavFooter';
+import Spinner from 'components/spinner/Spinner';
 import ContentView from './contentView/ContentView';
 
 import styles from './App.module.scss';
 
 const { store, persistor } = configureStore();
 
+const AppLoadingOverlay = () => {
+  const { appLoading } = useSelector((state: RootState) => state.app);
+  return <Spinner show={appLoading} />;
+};
+
 const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <div className={styles.app}>
+          <AppLoadingOverlay />
+
           <NavHeader />
 
           <div className={styles.layout}>

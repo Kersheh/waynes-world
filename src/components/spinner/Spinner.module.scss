@@ -1,0 +1,24 @@
+@import 'src/styles/abstract/colors';
+
+.spinner {
+  display: flex;
+  z-index: 2;
+
+  .spinnerIcon {
+    background: url('/images/icons/spinner.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+  }
+
+  &.isFullscreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $background-black-overlay;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

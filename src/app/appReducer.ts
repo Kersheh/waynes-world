@@ -3,10 +3,12 @@ import appActions from './appActions';
 
 export interface LibraryState {
   activeView: View;
+  appLoading: boolean;
 }
 
 const initialState: LibraryState = {
-  activeView: 'home'
+  activeView: 'home',
+  appLoading: false
 };
 
 const appReducer = (state = initialState, action: Action) => {
@@ -17,6 +19,11 @@ const appReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         activeView: data
+      };
+    case appActions.SET_APP_LOADING:
+      return {
+        ...state,
+        appLoading: data
       };
     default:
       return state;

@@ -1,9 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactSVG } from 'react-svg';
 
 import { RootState } from 'types';
 import Button from 'components/button/Button';
+import IconHome from 'components/icons/IconHome';
+import IconHomeOutline from 'components/icons/IconHomeOutline';
+import IconSearch from 'components/icons/IconSearch';
+import IconSearchOutline from 'components/icons/IconSearchOutline';
+import IconLibrary from 'components/icons/IconLibrary';
+import IconLibraryOutline from 'components/icons/IconLibraryOutline';
 import { setActiveViewAction } from 'app/appActions';
 import styles from './NavFooter.module.scss';
 
@@ -19,11 +24,7 @@ const NavFooter = () => {
           styleType="fullWidth"
         >
           <div className={styles.content}>
-            {activeView === 'home' ? (
-              <ReactSVG src="/images/icons/home.svg" />
-            ) : (
-              <ReactSVG src="/images/icons/home-outline.svg" />
-            )}
+            {activeView === 'home' ? <IconHome /> : <IconHomeOutline />}
             <div>Home</div>
           </div>
         </Button>
@@ -33,11 +34,7 @@ const NavFooter = () => {
           styleType="fullWidth"
         >
           <div className={styles.content}>
-            {activeView === 'search' ? (
-              <ReactSVG src="/images/icons/search.svg" />
-            ) : (
-              <ReactSVG src="/images/icons/search-outline.svg" />
-            )}
+            {activeView === 'search' ? <IconSearch /> : <IconSearchOutline />}
             <div>Search</div>
           </div>
         </Button>
@@ -48,9 +45,9 @@ const NavFooter = () => {
         >
           <div className={styles.content}>
             {activeView === 'library' ? (
-              <ReactSVG src="/images/icons/library.svg" />
+              <IconLibrary />
             ) : (
-              <ReactSVG src="/images/icons/library-outline.svg" />
+              <IconLibraryOutline />
             )}
             <div>Library</div>
           </div>
