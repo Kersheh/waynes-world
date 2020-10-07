@@ -5,10 +5,10 @@ import { RootState } from 'types';
 import Button from 'components/button/Button';
 import IconHome from 'components/icons/IconHome';
 import IconHomeOutline from 'components/icons/IconHomeOutline';
-import IconSearch from 'components/icons/IconSearch';
-import IconSearchOutline from 'components/icons/IconSearchOutline';
 import IconLibrary from 'components/icons/IconLibrary';
 import IconLibraryOutline from 'components/icons/IconLibraryOutline';
+import IconPlus from 'components/icons/IconPlus';
+import IconPlusOutline from 'components/icons/IconPlusOutline';
 import { setActiveViewAction } from 'app/appActions';
 import styles from './NavFooter.module.scss';
 
@@ -30,12 +30,12 @@ const NavFooter = () => {
         </Button>
 
         <Button
-          onClick={() => dispatch(setActiveViewAction('search'))}
+          onClick={() => dispatch(setActiveViewAction('addAlbum'))}
           styleType="fullWidth"
         >
           <div className={styles.content}>
-            {activeView === 'search' ? <IconSearch /> : <IconSearchOutline />}
-            <div>Search</div>
+            {activeView === 'addAlbum' ? <IconPlus /> : <IconPlusOutline />}
+            <div>Add Album</div>
           </div>
         </Button>
 

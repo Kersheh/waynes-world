@@ -35,5 +35,6 @@
     import/no-unresolved: 'off'
     react/button-has-type: 'off'
     react/require-default-props: 'off'
+    react-hooks/exhaustive-deps: 'off'
     '@typescript-eslint/explicit-function-return-type': 'off'
     '@typescript-eslint/no-explicit-any': 'off'

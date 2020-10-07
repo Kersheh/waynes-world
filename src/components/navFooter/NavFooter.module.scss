@@ -1,9 +1,10 @@
 @import 'src/styles/abstract/colors';
+@import 'src/styles/abstract/constants';
 
 $iphone-white-bar-padding: 12px;
 
 .navFooter {
-  height: 64px;
+  height: $nav-footer-height;
   background-color: $background-dark-grey;
   padding-bottom: $iphone-white-bar-padding;
 
@@ -19,12 +20,6 @@ $iphone-white-bar-padding: 12px;
 
       > div {
         margin-top: -6px;
-      }
-    }
-
-    .content {
-      &.active {
-
       }
     }
   }

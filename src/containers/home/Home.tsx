@@ -33,7 +33,7 @@ const HomeContainer = () => {
 
       <div className={styles.albumScroll}>
         {recentAlbums.map(album => (
-          <Album title={album.title} artist={album.artist} />
+          <Album title={album.title} artist={album.artist} key={album.title} />
         ))}
       </div>
     </div>

@@ -1,0 +1,28 @@
+@import 'src/styles/abstract/colors';
+
+.searchBar {
+  width: 100%;
+
+  > svg {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 16px;
+    left: 22px;
+  }
+
+  > input {
+    width: 100%;
+    border: 0;
+    border-radius: 7px;
+    outline: none;
+    padding: .3rem 12px .3rem 32px;
+    color: $white;
+    background-color: rgba($white, 0.1);
+
+    &::placeholder {
+      color: $white;
+      font-weight: 600;
+    }
+  }
+}

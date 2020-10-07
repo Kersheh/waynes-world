@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 
 import { Action } from 'types';
 import appReducer from 'app/appReducer';
+import addAlbumReducer from 'containers/addAlbum/addAlbumReducer';
 import libraryReducer from 'containers/library/libraryReducer';
 
 const combinedReducer = combineReducers({
   app: appReducer,
+  addAlbum: addAlbumReducer,
   library: libraryReducer
 });
 

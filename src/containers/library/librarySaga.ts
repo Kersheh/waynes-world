@@ -7,8 +7,8 @@ function* addAlbumSaga(action: Action) {
   yield console.log('add album saga', action);
 }
 
-export function* gameSagas() {
+export function* librarySaga() {
   yield all([yield takeLatest(libraryActions.ADD_ALBUM, addAlbumSaga)]);
 }
 
-export default gameSagas;
+export default librarySaga;

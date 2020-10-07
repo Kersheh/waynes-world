@@ -1,1 +1,1 @@
-export type View = 'home' | 'search' | 'library' | 'settings';
+export type View = 'home' | 'addAlbum' | 'library' | 'settings';

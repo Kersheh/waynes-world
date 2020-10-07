@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 import { RequestData } from 'types';
 
+export * from './spotify';
+
 export const getRequest = async (url: string, options?: AxiosRequestConfig) => {
   try {
     const res = await axios.get(url, options);
