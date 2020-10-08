@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from '../App';
+import Spinner from '../Spinner';
 
-describe('<App/> component', () => {
+describe('<Spinner/> component', () => {
   it('should render', () => {
     const { container } = render(
-      <App />
+      <Spinner />
     );
 
     expect(container).toMatchSnapshot();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
-import { RootState } from 'types';
+import { RootState, SpotifyArtist, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
 import SearchBar from 'components/searchBar/SearchBar';
 import IconSearch from 'components/icons/IconSearch';
@@ -39,19 +39,30 @@ const AddAlbumContainer = () => {
       <div className={styles.searchBtn}>
         <IconSearch />
 
-        <button
+        <Button
           type="button"
+          styleType="basic"
           onClick={() => {
             setShowSearch(true);
             methods.reset({ search: searchQuery });
           }}
         >
           Artists or albums
-        </button>
+        </Button>
       </div>
 
       <div className={styles.searchResults}>
-        {searchResults.length <= 0 && <h4>No results</h4>}
+        {searchResults.artists <= 0 && searchResults.albums <= 0 ?
+          <h4>No results</h4> :
+          <>
+            {searchResults.artists.map((artist: SpotifyArtist) =>
+              <pre>{JSON.stringify(artist, null, 2)}</pre>
+            )}
+            {searchResults.albums.map((album: SpotifyAlbum) =>
+              <pre>{JSON.stringify(album, null, 2)}</pre>
+            )}
+          </>
+        }
       </div>
 
       {showSearch &&

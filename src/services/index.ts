@@ -15,7 +15,7 @@ export const getRequest = async (url: string, options?: AxiosRequestConfig) => {
     return res;
   } catch (error) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Error:', error);
+      console.error('API Error:', error);
     }
 
     throw error;
@@ -37,7 +37,7 @@ export const postRequest = async (
     return res;
   } catch (error) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Error:', error);
+      console.error('API Error:', error);
     }
 
     throw error;
@@ -59,7 +59,7 @@ export const putRequest = async (
     return res;
   } catch (error) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Error:', error);
+      console.error('API Error:', error);
     }
 
     throw error;

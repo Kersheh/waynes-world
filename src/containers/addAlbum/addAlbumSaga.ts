@@ -1,14 +1,18 @@
-import { all, takeLatest, call } from 'redux-saga/effects';
+import { all, takeLatest, call, put } from 'redux-saga/effects';
 
 import { Action } from 'types';
 import { getSpotifySearchQuery } from 'services';
-import addAlbumActions from './addAlbumActions';
+import addAlbumActions, { searchSpotifySuccessAction } from './addAlbumActions';
 
 function* searchSpotifySaga(action: Action) {
   const res = yield call(getSpotifySearchQuery, action.data);
 
   if (res.status === 200) {
     console.log(res.data);
+    yield put(searchSpotifySuccessAction({
+      artists: res.data.body.artists.items,
+      albums: res.data.body.albums.items
+    }))
   }
 }
 

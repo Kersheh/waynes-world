@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from '../App';
+import NavHeader from '../NavHeader';
 
-describe('<App/> component', () => {
+describe('<NavHeader/> component', () => {
   it('should render', () => {
     const { container } = render(
-      <App />
+      <NavHeader />
     );
 
     expect(container).toMatchSnapshot();

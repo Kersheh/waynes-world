@@ -11,7 +11,7 @@
 
       > svg {
         position: absolute;
-        top: 7px;
+        top: 6px;
         left: 10px;
 
         path {
@@ -23,11 +23,17 @@
         width: 100%;
         border-radius: 7px;
         outline: none;
+        color: $primary-black;
         background-color: $white;
         padding: .5rem 1rem .5rem 38px;
         text-align: left;
         cursor: pointer;
       }
+    }
+
+    &Results {
+      display: flex;
+      flex-direction: column;
     }
 
     &Overlay {

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavHeader/> component should render 1`] = `
+<div>
+  <div
+    class="navHeader"
+  />
+</div>
+`;

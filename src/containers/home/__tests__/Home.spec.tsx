@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from '../App';
+import Home from '../Home';
 
-describe('<App/> component', () => {
+describe('<Home/> component', () => {
   it('should render', () => {
     const { container } = render(
-      <App />
+      <Home />
     );
 
     expect(container).toMatchSnapshot();

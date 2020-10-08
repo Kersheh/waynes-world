@@ -10,7 +10,7 @@ export interface ButtonProps {
   name?: 'string;';
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  styleType?: 'text' | 'fullWidth' | 'album';
+  styleType?: 'basic' | 'text' | 'fullWidth' | 'album';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 const Button = ({
@@ -29,6 +29,7 @@ const Button = ({
       onClick={onClick}
       className={cx({
         button: true,
+        basic: styleType === 'basic',
         text: styleType === 'text',
         fullWidth: styleType === 'fullWidth',
         album: styleType === 'album'

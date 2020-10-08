@@ -1,14 +1,20 @@
-import { Action } from 'types';
+import { Action, SpotifyArtist, SpotifyAlbum } from 'types';
 import addAlbumActions from './addAlbumActions';
 
 export interface AddAlbumState {
   searchQuery: string;
-  searchResults: Array<any>; // TODO
+  searchResults: {
+    artists: Array<SpotifyArtist>;
+    albums: Array<SpotifyAlbum>;
+  };
 }
 
 const initialState: AddAlbumState = {
   searchQuery: '',
-  searchResults: []
+  searchResults: {
+    artists: [],
+    albums: []
+  }
 };
 
 const addAlbumReducer = (state = initialState, action: Action) => {
@@ -28,7 +34,10 @@ const addAlbumReducer = (state = initialState, action: Action) => {
     case addAlbumActions.SEARCH_SPOTIFY_SUCCESS:
       return {
         ...state,
-        searchResults: data
+        searchResults: {
+          artists: data.artists,
+          albums: data.albums
+        }
       };
     default:
       return state;

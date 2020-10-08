@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner/> component should render 1`] = `
+<div>
+  <div
+    class="spinner isFullscreen"
+  >
+    <div
+      class="spinnerIcon"
+    />
+  </div>
+</div>
+`;

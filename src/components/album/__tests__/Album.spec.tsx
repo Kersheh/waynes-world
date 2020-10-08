@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from '../App';
+import Album from '../Album';
 
-describe('<App/> component', () => {
+describe('<Album/> component', () => {
   it('should render', () => {
     const { container } = render(
-      <App />
+      <Album title="Album Title" artist="Artist" />
     );
 
     expect(container).toMatchSnapshot();

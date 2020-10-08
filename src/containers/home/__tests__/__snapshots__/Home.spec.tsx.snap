@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home/> component should render 1`] = `
+<div>
+  <div
+    class="home"
+  >
+    <h2>
+      Recently added
+    </h2>
+    <div
+      class="albumScroll"
+    >
+      <button
+        class="button album"
+        type="button"
+      >
+        <div
+          class="album"
+        >
+          <div
+            class="art"
+          />
+          <div
+            class="tag"
+          >
+            <div
+              class="title"
+            >
+              Drive Slow
+            </div>
+            <div
+              class="artist"
+            >
+              Mac Ayres
+            </div>
+          </div>
+        </div>
+      </button>
+      <button
+        class="button album"
+        type="button"
+      >
+        <div
+          class="album"
+        >
+          <div
+            class="art"
+          />
+          <div
+            class="tag"
+          >
+            <div
+              class="title"
+            >
+              Freudian
+            </div>
+            <div
+              class="artist"
+            >
+              Daniel Caesar
+            </div>
+          </div>
+        </div>
+      </button>
+      <button
+        class="button album"
+        type="button"
+      >
+        <div
+          class="album"
+        >
+          <div
+            class="art"
+          />
+          <div
+            class="tag"
+          >
+            <div
+              class="title"
+            >
+              These Days
+            </div>
+            <div
+              class="artist"
+            >
+              Manwolves
+            </div>
+          </div>
+        </div>
+      </button>
+      <button
+        class="button album"
+        type="button"
+      >
+        <div
+          class="album"
+        >
+          <div
+            class="art"
+          />
+          <div
+            class="tag"
+          >
+            <div
+              class="title"
+            >
+              Lonerism
+            </div>
+            <div
+              class="artist"
+            >
+              Tame Impala
+            </div>
+          </div>
+        </div>
+      </button>
+      <button
+        class="button album"
+        type="button"
+      >
+        <div
+          class="album"
+        >
+          <div
+            class="art"
+          />
+          <div
+            class="tag"
+          >
+            <div
+              class="title"
+            >
+              Nectar
+            </div>
+            <div
+              class="artist"
+            >
+              Joji
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

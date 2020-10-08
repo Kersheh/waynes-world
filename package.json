@@ -10,7 +10,6 @@
     "lint:fix": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' --fix && stylelint --fix --config .stylelintrc.yml 'src/**/*.scss'"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.10",
@@ -23,6 +22,7 @@
     "@types/redux-logger": "^3.0.8",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -38,6 +38,7 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
     "eslint-config-airbnb-typescript": "^6.3.2",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",

@@ -18,6 +18,14 @@
     transition: transform 0.3s;
   }
 
+  &.basic {
+    transition: none;
+
+    &:active {
+      transform: none;
+    }
+  }
+
   &.text {
     font-weight: 600;
   }
