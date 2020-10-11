@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Album/> component should render 1`] = `
+exports[`<AlbumTile/> component should render 1`] = `
 <div>
   <button
-    class="button album"
+    class="button tile"
     type="button"
   >
     <div
-      class="album"
+      class="albumTile"
     >
       <div
         class="art"

@@ -19,7 +19,10 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
         >
           <div className={styles.artist}>
             <div className={styles.artistWrapper}>
-              <img src={artist.images[0].url} />
+              <img
+                src={artist.images[artist.images.length - 1].url}
+                alt={`Search result artist ${artist.name}`}
+              />
 
               <div className={styles.artistInfo}>
                 <div className={styles.artistName}>{artist.name}</div>
@@ -36,7 +39,10 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
         <Button styleType="basic" onClick={() => console.log('add album')}>
           <div className={styles.album}>
             <div className={styles.albumWrapper}>
-              <img src={album.images[0].url} />
+              <img
+                src={album.images[album.images.length - 1].url}
+                alt={`Search result album ${album.name}`}
+              />
 
               <div className={styles.artistInfo}>
                 <div className={styles.artistName}>{album.name}</div>

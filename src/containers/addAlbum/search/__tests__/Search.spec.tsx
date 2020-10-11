@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import renderWithStore from 'testUtils/renderWithStore';
 
 import Search from '../Search';
 
 describe('<Search/> component', () => {
   it('should render', () => {
-    const { container } = render(<Search />);
+    const { container } = renderWithStore(<Search />);
 
     expect(container).toMatchSnapshot();
   });

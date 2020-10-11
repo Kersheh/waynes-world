@@ -4,8 +4,6 @@ exports[`<SearchResult/> component should render 1`] = `
 <div>
   <div
     class="searchResult"
-  >
-    SearchResult Component 
-  </div>
+  />
 </div>
 `;

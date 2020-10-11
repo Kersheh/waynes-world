@@ -11,7 +11,7 @@ const AddAlbumContainer = () => {
 
   useEffect(() => {
     dispatch(clearSearchQueryAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.addAlbum}>

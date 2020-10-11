@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { RequestData, ResponseData } from 'types';
 
@@ -25,7 +25,7 @@ export const getRequest = async (
   } as AxiosRequestConfig
 ) => {
   try {
-    return await axios.get(url, options);
+    return await axios.get<AxiosResponse<ResponseData>>(url, options);
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('API Error:', formatErrorResponse(err.response));
@@ -43,7 +43,7 @@ export const postRequest = async (
   } as AxiosRequestConfig
 ) => {
   try {
-    return await axios.post(url, data, options);
+    return await axios.post<AxiosResponse<ResponseData>>(url, data, options);
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('API Error:', formatErrorResponse(err.response));
@@ -61,7 +61,7 @@ export const putRequest = async (
   } as AxiosRequestConfig
 ) => {
   try {
-    return await axios.put<ResponseData>(url, data, options);
+    return await axios.put<AxiosResponse<ResponseData>>(url, data, options);
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('API Error:', formatErrorResponse(err.response));

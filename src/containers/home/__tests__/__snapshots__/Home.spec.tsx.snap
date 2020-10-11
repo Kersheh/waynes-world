@@ -12,11 +12,11 @@ exports[`<Home/> component should render 1`] = `
       class="albumScroll"
     >
       <button
-        class="button album"
+        class="button tile"
         type="button"
       >
         <div
-          class="album"
+          class="albumTile"
         >
           <div
             class="art"
@@ -38,11 +38,11 @@ exports[`<Home/> component should render 1`] = `
         </div>
       </button>
       <button
-        class="button album"
+        class="button tile"
         type="button"
       >
         <div
-          class="album"
+          class="albumTile"
         >
           <div
             class="art"
@@ -64,11 +64,11 @@ exports[`<Home/> component should render 1`] = `
         </div>
       </button>
       <button
-        class="button album"
+        class="button tile"
         type="button"
       >
         <div
-          class="album"
+          class="albumTile"
         >
           <div
             class="art"
@@ -90,11 +90,11 @@ exports[`<Home/> component should render 1`] = `
         </div>
       </button>
       <button
-        class="button album"
+        class="button tile"
         type="button"
       >
         <div
-          class="album"
+          class="albumTile"
         >
           <div
             class="art"
@@ -116,11 +116,11 @@ exports[`<Home/> component should render 1`] = `
         </div>
       </button>
       <button
-        class="button album"
+        class="button tile"
         type="button"
       >
         <div
-          class="album"
+          class="albumTile"
         >
           <div
             class="art"

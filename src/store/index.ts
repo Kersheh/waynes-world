@@ -25,7 +25,10 @@ const configureStore = () => {
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   let middleware: Array<Middleware> = [sagaMiddleware];
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    process.env.NODE_ENV !== 'test'
+  ) {
     middleware = [...middleware, createLogger({ collapsed: true })];
   }
 

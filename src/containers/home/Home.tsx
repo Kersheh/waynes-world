@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Album from 'components/album/Album';
+import AlbumTile from 'components/albumTile/AlbumTile';
 import styles from './Home.module.scss';
 
 const HomeContainer = () => {
@@ -33,7 +33,11 @@ const HomeContainer = () => {
 
       <div className={styles.albumScroll}>
         {recentAlbums.map(album => (
-          <Album title={album.title} artist={album.artist} key={album.title} />
+          <AlbumTile
+            title={album.title}
+            artist={album.artist}
+            key={album.title}
+          />
         ))}
       </div>
     </div>

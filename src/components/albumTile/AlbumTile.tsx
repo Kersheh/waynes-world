@@ -1,18 +1,18 @@
 import React from 'react';
 
 import Button from 'components/button/Button';
-import styles from './Album.module.scss';
+import styles from './AlbumTile.module.scss';
 
-interface AlbumProps {
+interface AlbumTileProps {
   title: string;
   artist: string;
   // id?: string;
   // src?: any; // TODO
 }
-const Album = ({ title, artist }: AlbumProps) => {
+const AlbumTile = ({ title, artist }: AlbumTileProps) => {
   return (
-    <Button styleType="album">
-      <div className={styles.album}>
+    <Button styleType="tile">
+      <div className={styles.albumTile}>
         <div className={styles.art} />
 
         <div className={styles.tag}>
@@ -24,4 +24,4 @@ const Album = ({ title, artist }: AlbumProps) => {
   );
 };
 
-export default Album;
+export default AlbumTile;

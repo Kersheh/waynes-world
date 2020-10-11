@@ -6,9 +6,6 @@ exports[`<App/> component should render 1`] = `
     class="app"
   >
     <div
-      class="navHeader"
-    />
-    <div
       class="layout"
     >
       <div
@@ -24,11 +21,11 @@ exports[`<App/> component should render 1`] = `
             class="albumScroll"
           >
             <button
-              class="button album"
+              class="button tile"
               type="button"
             >
               <div
-                class="album"
+                class="albumTile"
               >
                 <div
                   class="art"
@@ -50,11 +47,11 @@ exports[`<App/> component should render 1`] = `
               </div>
             </button>
             <button
-              class="button album"
+              class="button tile"
               type="button"
             >
               <div
-                class="album"
+                class="albumTile"
               >
                 <div
                   class="art"
@@ -76,11 +73,11 @@ exports[`<App/> component should render 1`] = `
               </div>
             </button>
             <button
-              class="button album"
+              class="button tile"
               type="button"
             >
               <div
-                class="album"
+                class="albumTile"
               >
                 <div
                   class="art"
@@ -102,11 +99,11 @@ exports[`<App/> component should render 1`] = `
               </div>
             </button>
             <button
-              class="button album"
+              class="button tile"
               type="button"
             >
               <div
-                class="album"
+                class="albumTile"
               >
                 <div
                   class="art"
@@ -128,11 +125,11 @@ exports[`<App/> component should render 1`] = `
               </div>
             </button>
             <button
-              class="button album"
+              class="button tile"
               type="button"
             >
               <div
-                class="album"
+                class="albumTile"
               >
                 <div
                   class="art"

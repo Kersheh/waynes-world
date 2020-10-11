@@ -10,6 +10,7 @@
     "lint:fix": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' --fix && stylelint --fix --config .stylelintrc.yml 'src/**/*.scss'"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.10",
@@ -24,6 +25,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
+    "mutationobserver-shim": "^0.3.7",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -38,7 +40,6 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
     "eslint-config-airbnb-typescript": "^6.3.2",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
@@ -46,13 +47,10 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
-    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
     "stylelint-config-sass-guidelines": "^7.1.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
