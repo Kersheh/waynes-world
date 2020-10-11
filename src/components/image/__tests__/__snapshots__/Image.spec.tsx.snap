@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Image/> component should render 1`] = `
+<div>
+  <div
+    class="image"
+  >
+    <img
+      src="/some/image/src"
+      style="display: none;"
+    />
+    <div
+      class="undefined placeholderWrapper"
+    >
+      <img
+        alt="Loading placeholder"
+        class="placeholder"
+        src="/images/placeholder.svg"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { SpotifyArtist, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
+import Image from 'components/image/Image';
 import IconCaretRight from 'components/icons/IconCaretRight';
 import styles from './SearchResult.module.scss';
 
@@ -19,9 +20,10 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
         >
           <div className={styles.artist}>
             <div className={styles.artistWrapper}>
-              <img
+              <Image
                 src={artist.images[artist.images.length - 1].url}
                 alt={`Search result artist ${artist.name}`}
+                className={styles.image}
               />
 
               <div className={styles.artistInfo}>
@@ -39,9 +41,10 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
         <Button styleType="basic" onClick={() => console.log('add album')}>
           <div className={styles.album}>
             <div className={styles.albumWrapper}>
-              <img
+              <Image
                 src={album.images[album.images.length - 1].url}
                 alt={`Search result album ${album.name}`}
+                className={styles.image}
               />
 
               <div className={styles.artistInfo}>

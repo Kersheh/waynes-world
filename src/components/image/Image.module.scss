@@ -1,0 +1,14 @@
+.image {
+  display: flex;
+
+  .placeholder {
+    width: 80%;
+    height: 80%;
+
+    &Wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -57,7 +57,7 @@
     @include name;
     @include tag;
 
-    img {
+    .image {
       width: 38px;
       height: 38px;
       border: 1px solid $primary-grey;
@@ -73,8 +73,9 @@
     @include name;
     @include tag;
 
-    img {
+    .image {
       width: 38px;
+      height: 38px;
       border: 1px solid $primary-grey;
     }
 
