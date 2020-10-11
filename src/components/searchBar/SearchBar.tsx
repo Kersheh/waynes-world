@@ -17,6 +17,7 @@ const SearchBar = () => {
         ref={register}
         autoFocus
         placeholder="Search"
+        autoComplete="off"
       />
     </div>
   );

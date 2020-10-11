@@ -1,67 +1,72 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-import { RequestData } from 'types';
+import { RequestData, ResponseData } from 'types';
 
 export * from './spotify';
 
-export const getRequest = async (url: string, options?: AxiosRequestConfig) => {
+const formatErrorResponse = (err: {
+  config: {
+    url: string;
+  };
+  status: number;
+  data?: {
+    [key: string]: any;
+  };
+}) => ({
+  url: err.config.url,
+  status: err.status,
+  data: err?.data ?? {}
+});
+
+export const getRequest = async (
+  url: string,
+  options = {
+    responseType: 'json'
+  } as AxiosRequestConfig
+) => {
   try {
-    const res = await axios.get(url, options);
-
+    return await axios.get(url, options);
+  } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Res:', res);
+      console.error('API Error:', formatErrorResponse(err.response));
     }
 
-    return res;
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('API Error:', error);
-    }
-
-    throw error;
+    return formatErrorResponse(err.response);
   }
 };
 
 export const postRequest = async (
   url: string,
   data: RequestData,
-  options?: AxiosRequestConfig
+  options = {
+    responseType: 'json'
+  } as AxiosRequestConfig
 ) => {
   try {
-    const res = await axios.post(url, data, options);
-
+    return await axios.post(url, data, options);
+  } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Res:', res);
+      console.error('API Error:', formatErrorResponse(err.response));
     }
 
-    return res;
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('API Error:', error);
-    }
-
-    throw error;
+    return formatErrorResponse(err.response);
   }
 };
 
 export const putRequest = async (
   url: string,
   data: RequestData,
-  options?: AxiosRequestConfig
+  options = {
+    responseType: 'json'
+  } as AxiosRequestConfig
 ) => {
   try {
-    const res = await axios.put(url, data, options);
-
+    return await axios.put<ResponseData>(url, data, options);
+  } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
-      console.log('API Res:', res);
+      console.error('API Error:', formatErrorResponse(err.response));
     }
 
-    return res;
-  } catch (error) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('API Error:', error);
-    }
-
-    throw error;
+    return formatErrorResponse(err.response);
   }
 };

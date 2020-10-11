@@ -6,10 +6,10 @@ import styles from './Album.module.scss';
 interface AlbumProps {
   title: string;
   artist: string;
-  id?: string;
-  src?: any; // TODO
+  // id?: string;
+  // src?: any; // TODO
 }
-const Album = ({ title, artist, id, src }: AlbumProps) => {
+const Album = ({ title, artist }: AlbumProps) => {
   return (
     <Button styleType="album">
       <div className={styles.album}>

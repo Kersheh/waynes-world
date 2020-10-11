@@ -14,3 +14,10 @@ export type Action = {
 export type RequestData = {
   [key: string]: any;
 };
+
+export type ResponseData = {
+  statusCode?: number;
+  data: {
+    [key: string]: any;
+  };
+};

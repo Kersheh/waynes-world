@@ -5,9 +5,7 @@ import App from '../App';
 
 describe('<App/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <App />
-    );
+    const { container } = render(<App />);
 
     expect(container).toMatchSnapshot();
   });

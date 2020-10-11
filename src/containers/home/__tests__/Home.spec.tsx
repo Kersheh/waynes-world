@@ -5,9 +5,7 @@ import Home from '../Home';
 
 describe('<Home/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <Home />
-    );
+    const { container } = render(<Home />);
 
     expect(container).toMatchSnapshot();
   });

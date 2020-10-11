@@ -5,9 +5,7 @@ import SearchBar from '../SearchBar';
 
 describe('<SearchBar/> component', () => {
   it('should render', () => {
-    const { container } = renderWithStore(
-      <SearchBar />
-    );
+    const { container } = renderWithStore(<SearchBar />);
 
     expect(container).toMatchSnapshot();
   });

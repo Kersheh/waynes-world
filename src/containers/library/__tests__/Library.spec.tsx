@@ -5,9 +5,7 @@ import Library from '../Library';
 
 describe('<Library/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <Library />
-    );
+    const { container } = render(<Library />);
 
     expect(container).toMatchSnapshot();
   });

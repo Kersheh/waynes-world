@@ -5,9 +5,7 @@ import Button from '../Button';
 
 describe('<Button/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <Button />
-    );
+    const { container } = render(<Button />);
 
     expect(container).toMatchSnapshot();
   });

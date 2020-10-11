@@ -5,9 +5,7 @@ import NavFooter from '../NavFooter';
 
 describe('<NavFooter/> component', () => {
   it('should render', () => {
-    const { container } = renderWithStore(
-      <NavFooter />
-    );
+    const { container } = renderWithStore(<NavFooter />);
 
     expect(container).toMatchSnapshot();
   });

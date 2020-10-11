@@ -1,0 +1,23 @@
+@import 'src/styles/abstract/colors';
+
+.error {
+  position: absolute;
+  bottom: 76px;
+  width: 100vw;
+  background-color: $burnt-sienna;
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 21px;
+    line-height: 0;
+  }
+
+  .message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+  }
+}

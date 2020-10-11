@@ -5,9 +5,7 @@ import Spinner from '../Spinner';
 
 describe('<Spinner/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <Spinner />
-    );
+    const { container } = render(<Spinner />);
 
     expect(container).toMatchSnapshot();
   });

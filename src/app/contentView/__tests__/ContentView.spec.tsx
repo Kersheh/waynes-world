@@ -5,9 +5,7 @@ import ContentView from '../ContentView';
 
 describe('<ContentView/> component', () => {
   it('should render', () => {
-    const { container } = renderWithStore(
-      <ContentView />
-    );
+    const { container } = renderWithStore(<ContentView />);
 
     expect(container).toMatchSnapshot();
   });

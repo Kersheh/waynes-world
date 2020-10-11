@@ -1,13 +1,12 @@
 import React from 'react';
+
 import { render } from '@testing-library/react';
 
-import NavHeader from '../NavHeader';
+import Search from '../Search';
 
-describe('<NavHeader/> component', () => {
+describe('<Search/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <NavHeader />
-    );
+    const { container } = render(<Search />);
 
     expect(container).toMatchSnapshot();
   });
