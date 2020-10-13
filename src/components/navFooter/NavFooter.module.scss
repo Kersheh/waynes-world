@@ -7,6 +7,7 @@ $iphone-white-bar-padding: 12px;
   height: $nav-footer-height;
   background-color: $background-dark-grey;
   padding-bottom: $iphone-white-bar-padding;
+  box-shadow: 0 17px 5px 14px $primary-light-grey;
 
   .btns {
     display: flex;

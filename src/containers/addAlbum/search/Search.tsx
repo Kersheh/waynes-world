@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
-import { RootState } from 'types';
+import { RootState, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
 import SearchBar from 'components/searchBar/SearchBar';
 import SearchResult from 'components/searchResult/SearchResult';
@@ -13,6 +13,10 @@ import {
 } from '../addAlbumActions';
 import styles from './Search.module.scss';
 
+type SearchFormValues = {
+  search: string;
+};
+
 interface SearchProps {
   showSearch: boolean;
   setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,17 +26,13 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
   const { searchQuery, searchResults } = useSelector(
     (state: RootState) => state.addAlbum
   );
-  const methods = useForm<FormValues>({
+  const methods = useForm<SearchFormValues>({
     defaultValues: {
       search: ''
     }
   });
 
-  type FormValues = {
-    search: string;
-  };
-
-  const submitSearch: SubmitHandler<FormValues> = data => {
+  const submitSearch: SubmitHandler<SearchFormValues> = data => {
     dispatch(searchSpotifyAction(data.search));
   };
 
@@ -78,7 +78,32 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
             ) : (
               <>
                 <SearchResult artist={searchResults.artists[0]} />
-                <SearchResult album={searchResults.albums[0]} />
+
+                {searchResults.albums
+                  .slice(0, 5)
+                  .map((album: SpotifyAlbum, index: number) => (
+                    <SearchResult
+                      key={`${album.name}-${index}`}
+                      album={album}
+                    />
+                  ))}
+
+                <div className={styles.allResults}>
+                  <SearchResult
+                    isAllButton
+                    allButtonText="All artists"
+                    onClick={() =>
+                      console.log('open all artists search results')
+                    }
+                  />
+                  <SearchResult
+                    isAllButton
+                    allButtonText="All albums"
+                    onClick={() =>
+                      console.log('open all albums search results')
+                    }
+                  />
+                </div>
               </>
             )}
           </div>

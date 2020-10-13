@@ -2,10 +2,10 @@
 
 .spinner {
   display: flex;
-  z-index: 2;
+  z-index: 10;
 
   .spinnerIcon {
-    background: url('/images/icons/spinner.svg');
+    background: url('/images/spinner.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 50px;

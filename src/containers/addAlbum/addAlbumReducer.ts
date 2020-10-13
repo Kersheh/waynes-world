@@ -1,3 +1,5 @@
+import { isUndefined } from 'lodash';
+
 import { Action, SpotifyArtist, SpotifyAlbum } from 'types';
 import addAlbumActions from './addAlbumActions';
 
@@ -7,6 +9,16 @@ export interface AddAlbumState {
     artists: Array<SpotifyArtist>;
     albums: Array<SpotifyAlbum>;
   };
+  editAlbumId: string | null;
+  editAlbum: {
+    artist: string;
+    album: string;
+    year: string;
+    genre: string;
+    shelf: string;
+    comments: string;
+    albumArt: string | null;
+  };
 }
 
 const initialState: AddAlbumState = {
@@ -14,6 +26,16 @@ const initialState: AddAlbumState = {
   searchResults: {
     artists: [],
     albums: []
+  },
+  editAlbumId: null,
+  editAlbum: {
+    artist: '',
+    album: '',
+    year: '',
+    genre: '',
+    shelf: '',
+    comments: '',
+    albumArt: null
   }
 };
 
@@ -38,6 +60,22 @@ const addAlbumReducer = (state = initialState, action: Action) => {
           artists: data.artists,
           albums: data.albums
         }
+      };
+    case addAlbumActions.CLEAR_EDIT_ALBUM:
+      return {
+        ...state,
+        editAlbum: {
+          ...initialState.editAlbum
+        },
+        editAlbumId: null
+      };
+    case addAlbumActions.SET_EDIT_ALBUM:
+      return {
+        ...state,
+        editAlbum: data.album,
+        editAlbumId: !isUndefined(data.albumId)
+          ? data.albumId
+          : state.editAlbumId
       };
     default:
       return state;

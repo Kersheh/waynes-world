@@ -1,0 +1,28 @@
+@import 'src/styles/abstract/colors';
+
+.textInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 0.3rem;
+
+  .label {
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
+
+  input {
+    border-radius: 0;
+    border: 1px solid $primary-grey;
+    background-color: $background-dark-grey;
+    color: $white;
+    padding: 0.4rem;
+    outline: 0;
+  }
+
+  .counter {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.7rem;
+  }
+}

@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { RequestData, ResponseData } from 'types';
 
+export * from './library';
 export * from './spotify';
 
 const formatErrorResponse = (err: {

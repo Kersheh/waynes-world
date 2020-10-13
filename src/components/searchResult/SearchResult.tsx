@@ -3,14 +3,23 @@ import React from 'react';
 import { SpotifyArtist, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
-import IconCaretRight from 'components/icons/IconCaretRight';
+import IconCaret from 'components/icons/IconCaret';
 import styles from './SearchResult.module.scss';
 
 interface SearchResultProps {
   artist?: SpotifyArtist;
   album?: SpotifyAlbum;
+  isAllButton?: boolean;
+  allButtonText?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
-const SearchResult = ({ artist, album }: SearchResultProps) => {
+const SearchResult = ({
+  artist,
+  album,
+  isAllButton = false,
+  allButtonText,
+  onClick
+}: SearchResultProps) => {
   return (
     <div className={styles.searchResult}>
       {artist && (
@@ -32,7 +41,7 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
               </div>
             </div>
 
-            <IconCaretRight />
+            <IconCaret />
           </div>
         </Button>
       )}
@@ -56,7 +65,17 @@ const SearchResult = ({ artist, album }: SearchResultProps) => {
               </div>
             </div>
 
-            <IconCaretRight />
+            <IconCaret />
+          </div>
+        </Button>
+      )}
+
+      {isAllButton && (
+        <Button styleType="basic" onClick={onClick}>
+          <div className={styles.allButton}>
+            <span>{allButtonText}</span>
+
+            <IconCaret />
           </div>
         </Button>
       )}

@@ -1,5 +1,8 @@
+@import 'src/styles/abstract/constants';
+
 .contentView {
   width: inherit;
+  margin-bottom: $nav-footer-height;
 
   .resetBtn {
     position: fixed;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextArea/> component should render 1`] = `
+<div>
+  <div
+    class="textArea"
+  >
+    <textarea
+      name="comments"
+    />
+  </div>
+</div>
+`;

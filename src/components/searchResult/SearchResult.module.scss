@@ -33,6 +33,8 @@
 @mixin name {
   &Name {
     font-weight: 600;
+    text-align: left;
+    margin-right: 8px;
   }
 }
 
@@ -40,6 +42,7 @@
   &Tag {
     color: $text-grey;
     font-size: 0.8rem;
+    text-align: left;
   }
 }
 
@@ -82,5 +85,12 @@
     .bullet {
       font-size: 0.6rem;
     }
+  }
+
+  .allButton {
+    @include svg;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
   }
 }
