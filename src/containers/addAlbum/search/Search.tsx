@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
@@ -26,6 +26,9 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
   const { searchQuery, searchResults } = useSelector(
     (state: RootState) => state.addAlbum
   );
+  const [hasRecentlySearched, setHasRecentlySearched] = useState(
+    searchResults.artists.length > 0 || searchResults.albums.length > 0
+  );
   const methods = useForm<SearchFormValues>({
     defaultValues: {
       search: ''
@@ -34,6 +37,7 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
 
   const submitSearch: SubmitHandler<SearchFormValues> = data => {
     dispatch(searchSpotifyAction(data.search));
+    setHasRecentlySearched(false);
   };
 
   return (
@@ -63,6 +67,10 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                 <Button
                   onClick={() => {
                     setShowSearch(false);
+                    setHasRecentlySearched(
+                      searchResults.artists.length > 0 ||
+                        searchResults.albums.length > 0
+                    );
                     dispatch(clearSearchQueryAction());
                   }}
                 >
@@ -73,10 +81,12 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
           </FormProvider>
 
           <div className={styles.searchResults}>
-            {searchResults.artists <= 0 && searchResults.albums <= 0 ? (
+            {searchResults.artists.length <= 0 &&
+            searchResults.albums.length <= 0 ? (
               <h4>No results</h4>
             ) : (
               <>
+                {hasRecentlySearched && <h4>Recent search results...</h4>}
                 <SearchResult artist={searchResults.artists[0]} />
 
                 {searchResults.albums

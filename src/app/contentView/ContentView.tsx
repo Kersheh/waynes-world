@@ -16,7 +16,7 @@ const ContentView = () => {
 
   return (
     <div className={styles.contentView}>
-      {false && (
+      {true && (
         <div className={styles.resetBtn}>
           <Button
             onClick={() =>

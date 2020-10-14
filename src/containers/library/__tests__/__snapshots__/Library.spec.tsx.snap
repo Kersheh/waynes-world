@@ -6,6 +6,9 @@ exports[`<Library/> component should render 1`] = `
     class="library"
   >
     Library
+    <pre>
+      []
+    </pre>
   </div>
 </div>
 `;

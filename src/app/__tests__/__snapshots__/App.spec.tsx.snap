@@ -12,6 +12,16 @@ exports[`<App/> component should render 1`] = `
         class="contentView"
       >
         <div
+          class="resetBtn"
+        >
+          <button
+            class="button text"
+            type="button"
+          >
+            @
+          </button>
+        </div>
+        <div
           class="home"
         >
           <h2>

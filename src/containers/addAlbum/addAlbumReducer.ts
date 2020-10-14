@@ -39,7 +39,10 @@ const initialState: AddAlbumState = {
   }
 };
 
-const addAlbumReducer = (state = initialState, action: Action) => {
+const addAlbumReducer = (
+  state = initialState,
+  action: Action
+): AddAlbumState => {
   const { type, data } = action;
 
   switch (type) {

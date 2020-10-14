@@ -71,26 +71,12 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
             </div>
 
             <div className={styles.info}>
-              <TextInput
-                name="artist"
-                label="Artist"
-                maxLength={50}
-                required
-              />
-              <TextInput
-                name="album"
-                label="Album"
-                maxLength={50}
-                required
-              />
+              <TextInput name="artist" label="Artist" maxLength={50} required />
+              <TextInput name="album" label="Album" maxLength={50} required />
             </div>
           </div>
 
-          <TextInput
-            name="genre"
-            label="Genre"
-            maxLength={20}
-          />
+          <TextInput name="genre" label="Genre" maxLength={20} />
 
           <div className={styles.otherInfo}>
             <TextInput
@@ -101,18 +87,10 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
                 methods.setValue('year', e.target.value.replace(/[^0-9]/i, ''));
               }}
             />
-            <TextInput
-              name="shelf"
-              label="Shelf"
-              maxLength={10}
-            />
+            <TextInput name="shelf" label="Shelf" maxLength={10} />
           </div>
 
-          <TextArea
-            name="comments"
-            label="Comments"
-            maxLength={2000}
-          />
+          <TextArea name="comments" label="Comments" maxLength={2000} />
         </form>
       </FormProvider>
     </div>

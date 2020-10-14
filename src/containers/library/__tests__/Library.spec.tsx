@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 
+import renderWithStore from 'testUtils/renderWithStore';
 import Library from '../Library';
 
 describe('<Library/> component', () => {
   it('should render', () => {
-    const { container } = render(<Library />);
+    const { container } = renderWithStore(<Library />);
 
     expect(container).toMatchSnapshot();
   });

@@ -1,33 +1,22 @@
-import { Action, Library } from 'types';
+import { Action, Album } from 'types';
 import libraryActions from './libraryActions';
 
 export interface LibraryState {
-  libraries: Array<Library>;
-  activeLibrary: string | null;
+  albums: Array<Album>;
 }
 
 const initialState: LibraryState = {
-  libraries: [],
-  activeLibrary: null
+  albums: []
 };
 
-const libraryReducer = (state = initialState, action: Action) => {
+const libraryReducer = (state = initialState, action: Action): LibraryState => {
   const { type, data } = action;
 
   switch (type) {
-    case libraryActions.SET_ACTIVE_LIBRARY:
+    case libraryActions.GET_LIBRARY_SUCCESS:
       return {
         ...state,
-        activeLibrary: data
-      };
-    case libraryActions.RESET_ACTIVE_LIBRARY:
-      return {
-        ...state,
-        activeLibrary: null
-      };
-    case libraryActions.ADD_ALBUM:
-      return {
-        ...state
+        albums: data
       };
     default:
       return state;

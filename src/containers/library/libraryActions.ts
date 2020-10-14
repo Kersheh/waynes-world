@@ -1,29 +1,24 @@
 import { ActionCreator } from 'redux';
 
-import { Action } from 'types';
+import { Action, Album } from 'types';
 
 enum libraryActions {
-  SET_ACTIVE_LIBRARY = 'SET_ACTIVE_LIBRARY',
-  RESET_ACTIVE_LIBRARY = 'RESET_ACTIVE_LIBRARY',
-  ADD_ALBUM = 'ADD_ALBUM'
+  GET_LIBRARY = 'GET_LIBRARY',
+  GET_LIBRARY_SUCCESS = 'GET_LIBRARY_SUCCESS'
 }
 
-export const setActiveLibraryAction: ActionCreator<Action> = (data: string) => {
+export const getLibraryAction: ActionCreator<Action> = () => {
   return {
-    type: libraryActions.SET_ACTIVE_LIBRARY,
+    type: libraryActions.GET_LIBRARY
+  };
+};
+
+export const getLibrarySuccessAction: ActionCreator<Action> = (
+  data: Array<Album>
+) => {
+  return {
+    type: libraryActions.GET_LIBRARY_SUCCESS,
     data
-  };
-};
-
-export const resetActiveLibraryAction: ActionCreator<Action> = () => {
-  return {
-    type: libraryActions.SET_ACTIVE_LIBRARY
-  };
-};
-
-export const addAlbumAction: ActionCreator<Action> = () => {
-  return {
-    type: libraryActions.ADD_ALBUM
   };
 };
 

@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 
 import TextInput from '../TextInput';
 
-
 jest.mock('react-hook-form', () => ({
   useFormContext: () => ({
     watch: jest.fn(),

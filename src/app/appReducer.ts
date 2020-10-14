@@ -1,17 +1,17 @@
 import { Action, View } from 'types';
 import appActions from './appActions';
 
-export interface LibraryState {
+export interface AppState {
   activeView: View;
   appLoading: boolean;
 }
 
-const initialState: LibraryState = {
+const initialState: AppState = {
   activeView: 'home',
   appLoading: false
 };
 
-const appReducer = (state = initialState, action: Action) => {
+const appReducer = (state = initialState, action: Action): AppState => {
   const { type, data } = action;
 
   switch (type) {

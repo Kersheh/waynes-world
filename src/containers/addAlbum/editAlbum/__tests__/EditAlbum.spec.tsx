@@ -6,7 +6,9 @@ import EditAlbum from '../EditAlbum';
 
 describe('<EditAlbum/> component', () => {
   it('should render', () => {
-    const { container } = renderWithStore(<EditAlbum setShowEditAlbum={() => {}} />);
+    const { container } = renderWithStore(
+      <EditAlbum setShowEditAlbum={() => {}} />
+    );
 
     expect(container).toMatchSnapshot();
   });

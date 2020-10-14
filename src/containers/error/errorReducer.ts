@@ -9,7 +9,7 @@ export const initialState: ErrorState = {
   message: null
 };
 
-const errorReducer = (state = initialState, action: Action) => {
+const errorReducer = (state = initialState, action: Action): ErrorState => {
   const { type, data } = action;
 
   switch (type) {

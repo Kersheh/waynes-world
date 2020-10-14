@@ -1,3 +1,7 @@
-.library {
+@import 'src/styles/abstract/mixins';
+@import 'src/styles/abstract/constants';
 
+.library {
+  @include view-margin;
+  margin-bottom: 76px;
 }

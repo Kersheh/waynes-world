@@ -1,8 +1,12 @@
 import { RequestData } from 'types';
-import { postRequest, putRequest } from 'services';
+import { postRequest, putRequest, getRequest } from 'services';
 import constants from 'utils/constants';
 
 const { config } = constants;
+
+export const getLibrary = async () => {
+  return getRequest(`${config.API}/library`);
+};
 
 export const createAlbum = async (data: RequestData) => {
   return postRequest(`${config.API}/library/album`, data);
