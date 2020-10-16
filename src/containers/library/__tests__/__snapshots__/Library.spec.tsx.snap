@@ -4,11 +4,6 @@ exports[`<Library/> component should render 1`] = `
 <div>
   <div
     class="library"
-  >
-    Library
-    <pre>
-      []
-    </pre>
-  </div>
+  />
 </div>
 `;

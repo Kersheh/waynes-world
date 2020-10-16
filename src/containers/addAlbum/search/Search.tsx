@@ -4,9 +4,9 @@ import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 
 import { RootState, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
-import SearchBar from 'components/searchBar/SearchBar';
-import SearchResult from 'components/searchResult/SearchResult';
 import IconSearch from 'components/icons/IconSearch';
+import SearchBar from './searchBar/SearchBar';
+import SearchResult from './searchResult/SearchResult';
 import {
   searchSpotifyAction,
   clearSearchQueryAction

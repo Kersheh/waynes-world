@@ -1,0 +1,30 @@
+@import 'src/styles/abstract/colors';
+
+.libraryAlbum {
+  > button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .albumArt {
+    width: 42px;
+    height: 42px;
+    border: solid $white 1px;
+    background-color: $background-dark-grey;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 12px;
+
+    .album {
+      font-weight: 700;
+    }
+
+    .artist {
+      color: $text-grey;
+    }
+  }
+}

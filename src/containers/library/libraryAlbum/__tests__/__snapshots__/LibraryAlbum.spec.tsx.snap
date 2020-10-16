@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LibraryAlbum/> component should render 1`] = `
+<div>
+  <div
+    class="libraryAlbum"
+  >
+    <button
+      class="button text"
+      type="button"
+    >
+      <div
+        class="albumArt"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="album"
+        >
+          Album name
+        </div>
+        <div
+          class="artist"
+        >
+          Artist name
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;

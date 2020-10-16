@@ -3,10 +3,12 @@ import libraryActions from './libraryActions';
 
 export interface LibraryState {
   albums: Array<Album>;
+  activeAlbumId: string | null;
 }
 
 const initialState: LibraryState = {
-  albums: []
+  albums: [],
+  activeAlbumId: null
 };
 
 const libraryReducer = (state = initialState, action: Action): LibraryState => {
@@ -17,6 +19,16 @@ const libraryReducer = (state = initialState, action: Action): LibraryState => {
       return {
         ...state,
         albums: data
+      };
+    case libraryActions.SET_ALBUM_VIEW:
+      return {
+        ...state,
+        activeAlbumId: data
+      };
+    case libraryActions.CLEAR_ALBUM_VIEW:
+      return {
+        ...state,
+        activeAlbumId: null
       };
     default:
       return state;

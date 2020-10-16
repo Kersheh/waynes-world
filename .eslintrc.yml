@@ -42,3 +42,4 @@
     '@typescript-eslint/no-explicit-any': 'off'
     jsx-a11y/no-autofocus: 'off'
     react/no-array-index-key: 'off'
+    no-console: 'off'

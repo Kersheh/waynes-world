@@ -16,10 +16,8 @@ exports[`<AlbumTile/> component should render 1`] = `
         class="tag"
       >
         <div
-          class="title"
-        >
-          Album Title
-        </div>
+          class="album"
+        />
         <div
           class="artist"
         >

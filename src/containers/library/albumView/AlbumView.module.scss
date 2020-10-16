@@ -1,0 +1,20 @@
+@import 'src/styles/abstract/colors';
+
+.albumView {
+  > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scaleX(-1);
+
+    &:active {
+      transform: scaleX(-1);
+    }
+
+    > svg {
+      height: 14px;
+      width: 14px;
+      fill: $white;
+    }
+  }
+}

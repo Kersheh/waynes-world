@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 
+import renderWithStore from 'testUtils/renderWithStore';
 import Home from '../Home';
 
 describe('<Home/> component', () => {
   it('should render', () => {
-    const { container } = render(<Home />);
+    const { container } = renderWithStore(<Home />);
 
     expect(container).toMatchSnapshot();
   });

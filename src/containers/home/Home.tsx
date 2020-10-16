@@ -1,42 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import AlbumTile from 'components/albumTile/AlbumTile';
+import { RootState } from 'types';
+import AlbumTile from './albumTile/AlbumTile';
 import styles from './Home.module.scss';
 
 const HomeContainer = () => {
-  const recentAlbums = [
-    {
-      title: 'Drive Slow',
-      artist: 'Mac Ayres'
-    },
-    {
-      title: 'Freudian',
-      artist: 'Daniel Caesar'
-    },
-    {
-      title: 'These Days',
-      artist: 'Manwolves'
-    },
-    {
-      title: 'Lonerism',
-      artist: 'Tame Impala'
-    },
-    {
-      title: 'Nectar',
-      artist: 'Joji'
-    }
-  ];
+  const { albums } = useSelector((state: RootState) => state.library);
 
   return (
     <div className={styles.home}>
       <h2>Recently added</h2>
 
       <div className={styles.albumScroll}>
-        {recentAlbums.map(album => (
+        {albums.map(album => (
           <AlbumTile
-            title={album.title}
+            album={album.album}
             artist={album.artist}
-            key={album.title}
+            key={album.album}
           />
         ))}
       </div>

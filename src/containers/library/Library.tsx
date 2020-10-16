@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from 'types';
+import { RootState, Album } from 'types';
 import { getLibraryAction } from './libraryActions';
-
+import AlbumView from './albumView/AlbumView';
+import LibraryAlbum from './libraryAlbum/LibraryAlbum';
 import styles from './Library.module.scss';
 
 const LibraryContainer = () => {
   const dispatch = useDispatch();
-  const { albums } = useSelector((state: RootState) => state.library);
+  const { albums, activeAlbumId } = useSelector(
+    (state: RootState) => state.library
+  );
 
   useEffect(() => {
     dispatch(getLibraryAction());
@@ -16,8 +19,24 @@ const LibraryContainer = () => {
 
   return (
     <div className={styles.library}>
-      Library
-      <pre>{JSON.stringify(albums, null, 2)}</pre>
+      {activeAlbumId && (
+        <AlbumView
+          album={
+            albums.find(album => album.id === activeAlbumId) ?? ({} as Album)
+          }
+        />
+      )}
+      {!activeAlbumId && (
+        <>
+          {albums.map(album => (
+            <LibraryAlbum
+              id={album.id}
+              album={album.album}
+              artist={album.artist}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };

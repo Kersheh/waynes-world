@@ -71,3 +71,20 @@ export const putRequest = async (
     return formatErrorResponse(err.response);
   }
 };
+
+export const deleteRequest = async (
+  url: string,
+  options = {
+    responseType: 'json'
+  } as AxiosRequestConfig
+) => {
+  try {
+    return await axios.delete<AxiosResponse<ResponseData>>(url, options);
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('API Error:', formatErrorResponse(err.response));
+    }
+
+    return formatErrorResponse(err.response);
+  }
+};
