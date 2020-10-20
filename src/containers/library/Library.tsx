@@ -28,11 +28,12 @@ const LibraryContainer = () => {
       )}
       {!activeAlbumId && (
         <>
-          {albums.map(album => (
+          {albums.map((album, index) => (
             <LibraryAlbum
               id={album.id}
               album={album.album}
               artist={album.artist}
+              key={`${album.album}-${index}`}
             />
           ))}
         </>

@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { RootState } from 'types';
 import Button from 'components/button/Button';
 import IconPlusOutline from 'components/icons/IconPlusOutline';
-import { clearSearchQueryAction } from './addAlbumActions';
+import {
+  clearSearchQueryAction,
+  clearEditAlbumViewStateAction
+} from './addAlbumActions';
 import Search from './search/Search';
 import EditAlbum from './editAlbum/EditAlbum';
 import styles from './AddAlbum.module.scss';
 
 const AddAlbumContainer = () => {
   const dispatch = useDispatch();
+  const { openEditAlbumView } = useSelector(
+    (state: RootState) => state.addAlbum
+  );
   const [showSearch, setShowSearch] = useState(false);
   const [showEditAlbum, setShowEditAlbum] = useState(false);
 
   useEffect(() => {
     dispatch(clearSearchQueryAction());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (openEditAlbumView) {
+      setShowEditAlbum(true);
+    }
+  }, [openEditAlbumView]);
+
+  useEffect(() => {
+    if (!showEditAlbum) {
+      dispatch(clearEditAlbumViewStateAction());
+    }
+  }, [dispatch, showEditAlbum]);
 
   return (
     <div className={styles.addAlbum}>

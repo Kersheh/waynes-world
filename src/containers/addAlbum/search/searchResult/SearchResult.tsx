@@ -23,10 +23,7 @@ const SearchResult = ({
   return (
     <div className={styles.searchResult}>
       {artist && (
-        <Button
-          styleType="basic"
-          onClick={() => console.log('open artist view of albums')}
-        >
+        <Button styleType="basic" onClick={onClick}>
           <div className={styles.artist}>
             <div className={styles.artistWrapper}>
               <Image
@@ -47,7 +44,7 @@ const SearchResult = ({
       )}
 
       {album && (
-        <Button styleType="basic" onClick={() => console.log('add album')}>
+        <Button styleType="basic" onClick={onClick}>
           <div className={styles.album}>
             <div className={styles.albumWrapper}>
               <Image

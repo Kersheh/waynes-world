@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
+import { parseISO, getYear } from 'date-fns';
 
 import { RootState, SpotifyAlbum } from 'types';
 import Button from 'components/button/Button';
@@ -9,7 +10,8 @@ import SearchBar from './searchBar/SearchBar';
 import SearchResult from './searchResult/SearchResult';
 import {
   searchSpotifyAction,
-  clearSearchQueryAction
+  clearSearchQueryAction,
+  setEditAlbumAction
 } from '../addAlbumActions';
 import styles from './Search.module.scss';
 
@@ -95,6 +97,21 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                     <SearchResult
                       key={`${album.name}-${index}`}
                       album={album}
+                      onClick={() =>
+                        dispatch(
+                          setEditAlbumAction({
+                            album: {
+                              artist: album.artists[0].name,
+                              album: album.name,
+                              year: getYear(parseISO(album.release_date)),
+                              genre: '',
+                              shelf: '',
+                              comments: '',
+                              albumArt: null
+                            }
+                          })
+                        )
+                      }
                     />
                   ))}
 

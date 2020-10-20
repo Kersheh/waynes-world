@@ -13,11 +13,11 @@ const HomeContainer = () => {
       <h2>Recently added</h2>
 
       <div className={styles.albumScroll}>
-        {albums.map(album => (
+        {albums.map((album, index) => (
           <AlbumTile
             album={album.album}
             artist={album.artist}
-            key={album.album}
+            key={`${album.album}-${index}`}
           />
         ))}
       </div>

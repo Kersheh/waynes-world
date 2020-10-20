@@ -13,7 +13,8 @@ enum addAlbumActions {
   SEARCH_SPOTIFY_SUCCESS = 'SEARCH_SPOTIFY_SUCCESS',
   CLEAR_EDIT_ALBUM = 'CLEAR_EDIT_ALBUM',
   SET_EDIT_ALBUM = 'SET_EDIT_ALBUM',
-  SAVE_UPDATE_ALBUM_ACTION = 'SAVE_UPDATE_ALBUM_ACTION'
+  SAVE_UPDATE_ALBUM_ACTION = 'SAVE_UPDATE_ALBUM_ACTION',
+  CLEAR_EDIT_ALBUM_VIEW_STATE = 'CLEAR_EDIT_ALBUM_VIEW_STATE'
 }
 
 export const clearSearchQueryAction: ActionCreator<Action> = () => {
@@ -69,6 +70,12 @@ export const saveUpdateAlbumAction: ActionCreator<Action> = (
   return {
     type: addAlbumActions.SAVE_UPDATE_ALBUM_ACTION,
     data
+  };
+};
+
+export const clearEditAlbumViewStateAction: ActionCreator<Action> = () => {
+  return {
+    type: addAlbumActions.CLEAR_EDIT_ALBUM_VIEW_STATE
   };
 };
 

@@ -19,6 +19,7 @@ export interface AddAlbumState {
     comments: string;
     albumArt: string | null;
   };
+  openEditAlbumView: boolean;
 }
 
 const initialState: AddAlbumState = {
@@ -36,7 +37,8 @@ const initialState: AddAlbumState = {
     shelf: '',
     comments: '',
     albumArt: null
-  }
+  },
+  openEditAlbumView: false
 };
 
 const addAlbumReducer = (
@@ -78,7 +80,13 @@ const addAlbumReducer = (
         editAlbum: data.album,
         editAlbumId: !isUndefined(data.albumId)
           ? data.albumId
-          : state.editAlbumId
+          : state.editAlbumId,
+        openEditAlbumView: true
+      };
+    case addAlbumActions.CLEAR_EDIT_ALBUM_VIEW_STATE:
+      return {
+        ...state,
+        openEditAlbumView: false
       };
     default:
       return state;

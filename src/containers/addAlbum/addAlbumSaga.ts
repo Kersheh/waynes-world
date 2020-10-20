@@ -3,7 +3,8 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { Action, SpotifyArtist, SpotifyAlbum } from 'types';
 import { getSpotifySearchQuery, createAlbum, updateAlbum } from 'services';
 import { getErrorMessage } from 'containers/error/errorHelper';
-import { setAppLoadingAction } from 'app/appActions';
+import { setAppLoadingAction, setActiveViewAction } from 'app/appActions';
+import { setAlbumView } from 'containers/library/libraryActions';
 import { setErrorMessageAction } from 'containers/error/errorActions';
 import addAlbumActions, { searchSpotifySuccessAction } from './addAlbumActions';
 
@@ -31,13 +32,18 @@ function* searchSpotifySaga(action: Action) {
 }
 
 function* saveUpdateAlbumSaga(action: Action) {
+  yield put(setAppLoadingAction(true));
+
   const res = !action.data.id
     ? yield call(createAlbum, action.data.album)
     : yield call(updateAlbum, action.data.id, action.data.album);
 
   if (res.status === 200 || res.status === 201) {
-    console.log('album saved/updated; response status:', res.status);
+    yield put(setActiveViewAction('library'));
+    yield put(setAlbumView(res.data.id));
   }
+
+  yield put(setAppLoadingAction(false));
 }
 
 export function* addAlbumSagas() {
