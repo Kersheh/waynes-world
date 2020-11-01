@@ -1,12 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 
+import renderWithStore from 'testUtils/renderWithStore';
 import AlbumTile from '../AlbumTile';
 
 describe('<AlbumTile/> component', () => {
   it('should render', () => {
-    const { container } = render(
-      <AlbumTile title="Album Title" artist="Artist" />
+    const { container } = renderWithStore(
+      <AlbumTile album="Album Title" artist="Artist" id="1234567890" />
     );
 
     expect(container).toMatchSnapshot();

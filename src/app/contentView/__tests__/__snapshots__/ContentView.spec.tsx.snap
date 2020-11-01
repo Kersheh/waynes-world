@@ -7,20 +7,19 @@ exports[`<ContentView/> component should render 1`] = `
   >
     <div
       class="resetBtn"
-    >
-      <button
-        class="button text"
-        type="button"
-      >
-        @
-      </button>
-    </div>
+    />
     <div
       class="home"
     >
       <h2>
         Recently added
       </h2>
+      <p>
+        No recently added albums found.
+      </p>
+      <div
+        class="albumScroll"
+      />
       <div
         class="albumScroll"
       />

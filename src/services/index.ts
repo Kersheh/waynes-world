@@ -14,8 +14,8 @@ const formatErrorResponse = (err: {
     [key: string]: any;
   };
 }) => ({
-  url: err.config.url,
-  status: err.status,
+  url: err?.config?.url ?? 'Unknown url',
+  status: err?.status ?? '500',
   data: err?.data ?? {}
 });
 

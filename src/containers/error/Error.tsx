@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import IconX from 'components/icons/IconX';
 import Button from 'components/button/Button';
 import { clearErrorMessageAction } from './errorActions';
 import styles from './Error.module.scss';
@@ -15,7 +16,9 @@ const ErrorContainer = ({ message }: ErrorContainerProps) => {
     <div className={styles.error}>
       <div className={styles.message}>
         <span>{message}</span>
-        <Button onClick={() => dispatch(clearErrorMessageAction())}>x</Button>
+        <Button onClick={() => dispatch(clearErrorMessageAction())}>
+          <IconX />
+        </Button>
       </div>
     </div>
   );

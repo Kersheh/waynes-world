@@ -1,6 +1,5 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 
-// import { Action } from 'types';
 import { getLibrary } from 'services';
 import { getErrorMessage } from 'containers/error/errorHelper';
 import { setAppLoadingAction } from 'app/appActions';
@@ -13,7 +12,12 @@ function* getLibrarySaga() {
   const res = yield call(getLibrary);
 
   if (res.status === 200) {
-    yield put(getLibrarySuccessAction(res.data));
+    yield put(
+      getLibrarySuccessAction({
+        albums: res.data.albumsAll,
+        recentlyAddedAlbums: res.data.albumsRecentlyAdded
+      })
+    );
   } else {
     yield put(setErrorMessageAction(getErrorMessage(res)));
   }

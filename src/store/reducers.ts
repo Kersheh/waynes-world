@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 import { Action } from 'types';
 import appReducer from 'app/appReducer';
 import addAlbumReducer from 'containers/addAlbum/addAlbumReducer';
-import errorReducer, { initialState } from 'containers/error/errorReducer';
 import libraryReducer from 'containers/library/libraryReducer';
+import errorReducer, { initialState } from 'containers/error/errorReducer';
 
 const combinedReducer = combineReducers({
   app: appReducer,

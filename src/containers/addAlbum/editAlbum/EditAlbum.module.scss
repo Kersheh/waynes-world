@@ -18,9 +18,10 @@
     justify-content: space-between;
     align-items: center;
     background-color: $background-dark-grey;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0.5rem;
     box-sizing: border-box;
     border-bottom: 1px solid $background-black-overlay;
+    z-index: 1;
 
     > button {
       display: flex;

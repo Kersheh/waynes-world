@@ -25,9 +25,7 @@ const AddAlbumContainer = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (openEditAlbumView) {
-      setShowEditAlbum(true);
-    }
+    setShowEditAlbum(openEditAlbumView);
   }, [openEditAlbumView]);
 
   useEffect(() => {

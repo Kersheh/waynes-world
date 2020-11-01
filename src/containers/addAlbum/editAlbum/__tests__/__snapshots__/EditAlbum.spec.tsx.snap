@@ -75,6 +75,7 @@ exports[`<EditAlbum/> component should render 1`] = `
                *
             </div>
             <input
+              class=""
               maxlength="50"
               name="artist"
               required=""
@@ -98,6 +99,7 @@ exports[`<EditAlbum/> component should render 1`] = `
                *
             </div>
             <input
+              class=""
               maxlength="50"
               name="album"
               required=""
@@ -122,6 +124,7 @@ exports[`<EditAlbum/> component should render 1`] = `
           Genre
         </div>
         <input
+          class=""
           maxlength="20"
           name="genre"
           type="text"
@@ -146,6 +149,7 @@ exports[`<EditAlbum/> component should render 1`] = `
             Year
           </div>
           <input
+            class=""
             maxlength="4"
             name="year"
             type="text"
@@ -167,6 +171,7 @@ exports[`<EditAlbum/> component should render 1`] = `
             Shelf
           </div>
           <input
+            class=""
             maxlength="10"
             name="shelf"
             type="text"

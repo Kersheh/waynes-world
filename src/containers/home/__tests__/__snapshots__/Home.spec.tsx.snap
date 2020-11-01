@@ -8,6 +8,12 @@ exports[`<Home/> component should render 1`] = `
     <h2>
       Recently added
     </h2>
+    <p>
+      No recently added albums found.
+    </p>
+    <div
+      class="albumScroll"
+    />
     <div
       class="albumScroll"
     />

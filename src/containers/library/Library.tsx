@@ -14,8 +14,10 @@ const LibraryContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(getLibraryAction());
-  }, [dispatch]);
+    if (!activeAlbumId) {
+      dispatch(getLibraryAction());
+    }
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={styles.library}>
@@ -28,7 +30,7 @@ const LibraryContainer = () => {
       )}
       {!activeAlbumId && (
         <>
-          {albums.map((album, index) => (
+          {albums?.map((album, index) => (
             <LibraryAlbum
               id={album.id}
               album={album.album}

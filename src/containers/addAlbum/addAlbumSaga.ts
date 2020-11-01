@@ -4,9 +4,15 @@ import { Action, SpotifyArtist, SpotifyAlbum } from 'types';
 import { getSpotifySearchQuery, createAlbum, updateAlbum } from 'services';
 import { getErrorMessage } from 'containers/error/errorHelper';
 import { setAppLoadingAction, setActiveViewAction } from 'app/appActions';
-import { setAlbumView } from 'containers/library/libraryActions';
+import {
+  setAlbumViewAction,
+  getLibraryAction
+} from 'containers/library/libraryActions';
 import { setErrorMessageAction } from 'containers/error/errorActions';
-import addAlbumActions, { searchSpotifySuccessAction } from './addAlbumActions';
+import addAlbumActions, {
+  searchSpotifySuccessAction,
+  clearEditAlbumAction
+} from './addAlbumActions';
 
 const filterResultsWithImages = (data: Array<SpotifyArtist | SpotifyAlbum>) => {
   return data.filter(item => item.images.length > 0);
@@ -39,8 +45,12 @@ function* saveUpdateAlbumSaga(action: Action) {
     : yield call(updateAlbum, action.data.id, action.data.album);
 
   if (res.status === 200 || res.status === 201) {
+    yield put(getLibraryAction());
     yield put(setActiveViewAction('library'));
-    yield put(setAlbumView(res.data.id));
+    yield put(setAlbumViewAction(res.data.id));
+    yield put(clearEditAlbumAction());
+  } else {
+    yield put(setErrorMessageAction(getErrorMessage(res)));
   }
 
   yield put(setAppLoadingAction(false));

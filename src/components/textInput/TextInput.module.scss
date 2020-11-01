@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
   margin-bottom: 0.3rem;
+  position: relative;
 
   .label {
     font-weight: 700;
@@ -18,11 +19,22 @@
     color: $white;
     padding: 0.4rem;
     outline: 0;
+
+    &.hasError {
+      border-color: $burnt-sienna;
+    }
   }
 
   .counter {
     display: flex;
     justify-content: flex-end;
     font-size: 0.7rem;
+  }
+
+  .error {
+    position: absolute;
+    bottom: 0;
+    color: $burnt-sienna;
+    font-size: 0.85rem;
   }
 }

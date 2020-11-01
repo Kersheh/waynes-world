@@ -24,7 +24,7 @@ export const getLibrarySuccessAction: ActionCreator<Action> = (
   };
 };
 
-export const setAlbumView: ActionCreator<Action> = (data: string) => {
+export const setAlbumViewAction: ActionCreator<Action> = (data: string) => {
   return {
     type: libraryActions.SET_ALBUM_VIEW,
     data

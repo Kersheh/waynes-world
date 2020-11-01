@@ -6,6 +6,13 @@ exports[`<App/> component should render 1`] = `
     class="app"
   >
     <div
+      class="spinner isFullscreen"
+    >
+      <div
+        class="spinnerIcon"
+      />
+    </div>
+    <div
       class="layout"
     >
       <div
@@ -13,20 +20,19 @@ exports[`<App/> component should render 1`] = `
       >
         <div
           class="resetBtn"
-        >
-          <button
-            class="button text"
-            type="button"
-          >
-            @
-          </button>
-        </div>
+        />
         <div
           class="home"
         >
           <h2>
             Recently added
           </h2>
+          <p>
+            No recently added albums found.
+          </p>
+          <div
+            class="albumScroll"
+          />
           <div
             class="albumScroll"
           />

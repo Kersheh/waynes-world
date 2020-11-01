@@ -21,7 +21,8 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
   );
 
   const methods = useForm<EditAlbumFormValues>({
-    defaultValues: editAlbum
+    defaultValues: editAlbum,
+    mode: 'onChange'
   });
 
   // update store values on change
@@ -48,14 +49,16 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
         <span>{editAlbumId ? 'Edit Album' : 'Add New Album'}</span>
 
         <Button
-          onClick={() =>
-            dispatch(
-              saveUpdateAlbumAction({
-                id: editAlbumId,
-                album: methods.getValues()
-              })
-            )
-          }
+          onClick={async () => {
+            if (await methods.trigger()) {
+              dispatch(
+                saveUpdateAlbumAction({
+                  id: editAlbumId,
+                  album: methods.getValues()
+                })
+              );
+            }
+          }}
         >
           Save
           <IconCaret className={styles.right} />
@@ -71,8 +74,20 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
             </div>
 
             <div className={styles.info}>
-              <TextInput name="artist" label="Artist" maxLength={50} required />
-              <TextInput name="album" label="Album" maxLength={50} required />
+              <TextInput
+                name="artist"
+                label="Artist"
+                maxLength={50}
+                required
+                error={methods.errors?.artist?.message}
+              />
+              <TextInput
+                name="album"
+                label="Album"
+                maxLength={50}
+                required
+                error={methods.errors?.album?.message}
+              />
             </div>
           </div>
 

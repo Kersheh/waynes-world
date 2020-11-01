@@ -5,7 +5,7 @@ export const getErrorMessage = (err: {
   };
 }) => {
   if (err?.data?.message) {
-    return `Error [${err.status}]: ${err.data.message}`;
+    return `Error: ${err.data.message}`;
   }
 
   return 'Error [500]: An unexpected error has occurred.';

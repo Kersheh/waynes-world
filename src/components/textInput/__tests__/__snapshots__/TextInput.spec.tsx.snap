@@ -6,6 +6,7 @@ exports[`<TextInput/> component should render 1`] = `
     class="textInput"
   >
     <input
+      class=""
       name="artist"
       type="text"
     />

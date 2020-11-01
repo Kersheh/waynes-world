@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import Button from 'components/button/Button';
-import { setAlbumView } from '../libraryActions';
+import { setAlbumViewAction } from '../libraryActions';
 import styles from './LibraryAlbum.module.scss';
 
 interface LibraryAlbumProps {
@@ -16,7 +16,7 @@ const LibraryAlbum = ({ id, album, artist }: LibraryAlbumProps) => {
 
   return (
     <div className={styles.libraryAlbum}>
-      <Button onClick={() => dispatch(setAlbumView(id))}>
+      <Button onClick={() => dispatch(setAlbumViewAction(id))}>
         <div className={styles.albumArt} />
 
         <div className={styles.info}>

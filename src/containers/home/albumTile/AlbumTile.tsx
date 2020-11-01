@@ -1,17 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import Button from 'components/button/Button';
+import { openAlbumInLibraryAction } from '../homeActions';
 import styles from './AlbumTile.module.scss';
 
 interface AlbumTileProps {
   album: string;
   artist: string;
-  // id?: string;
+  id: string;
   // src?: any; // TODO
 }
-const AlbumTile = ({ album, artist }: AlbumTileProps) => {
+const AlbumTile = ({ album, artist, id }: AlbumTileProps) => {
+  const dispatch = useDispatch();
+
   return (
-    <Button styleType="tile">
+    <Button
+      onClick={() => dispatch(openAlbumInLibraryAction(id))}
+      styleType="tile"
+    >
       <div className={styles.albumTile}>
         <div className={styles.art} />
 

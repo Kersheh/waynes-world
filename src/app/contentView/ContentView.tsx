@@ -18,13 +18,15 @@ const ContentView = () => {
     <div className={styles.contentView}>
       {true && (
         <div className={styles.resetBtn}>
-          <Button
-            onClick={() =>
-              dispatch({ type: 'PURGE', key: 'root', result: () => null })
-            }
-          >
-            @
-          </Button>
+          {false && (
+            <Button
+              onClick={() =>
+                dispatch({ type: 'PURGE', key: 'root', result: () => null })
+              }
+            >
+              @
+            </Button>
+          )}
         </div>
       )}
 

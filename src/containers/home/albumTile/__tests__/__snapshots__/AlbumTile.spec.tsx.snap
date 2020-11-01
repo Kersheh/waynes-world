@@ -17,7 +17,9 @@ exports[`<AlbumTile/> component should render 1`] = `
       >
         <div
           class="album"
-        />
+        >
+          Album Title
+        </div>
         <div
           class="artist"
         >

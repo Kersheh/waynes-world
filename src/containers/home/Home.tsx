@@ -6,20 +6,44 @@ import AlbumTile from './albumTile/AlbumTile';
 import styles from './Home.module.scss';
 
 const HomeContainer = () => {
-  const { albums } = useSelector((state: RootState) => state.library);
+  const { recentlyAddedAlbums } = useSelector(
+    (state: RootState) => state.library
+  );
 
   return (
     <div className={styles.home}>
       <h2>Recently added</h2>
 
+      {recentlyAddedAlbums.length === 0 && (
+        <p>No recently added albums found.</p>
+      )}
+
       <div className={styles.albumScroll}>
-        {albums.map((album, index) => (
-          <AlbumTile
-            album={album.album}
-            artist={album.artist}
-            key={`${album.album}-${index}`}
-          />
-        ))}
+        {recentlyAddedAlbums?.map(
+          (album, index) =>
+            !(index % 2) && (
+              <AlbumTile
+                album={album.album}
+                artist={album.artist}
+                id={album.id}
+                key={`${album.album}-${index}`}
+              />
+            )
+        )}
+      </div>
+
+      <div className={styles.albumScroll}>
+        {recentlyAddedAlbums?.map(
+          (album, index) =>
+            !!(index % 2) && (
+              <AlbumTile
+                album={album.album}
+                artist={album.artist}
+                id={album.id}
+                key={`${album.album}-${index}`}
+              />
+            )
+        )}
       </div>
     </div>
   );
