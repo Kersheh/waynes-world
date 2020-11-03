@@ -35,6 +35,7 @@ const LibraryContainer = () => {
               id={album.id}
               album={album.album}
               artist={album.artist}
+              artBase64={album.artBase64}
               key={`${album.album}-${index}`}
             />
           ))}

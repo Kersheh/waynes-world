@@ -8,6 +8,7 @@ import TextInput from 'components/textInput/TextInput';
 import TextArea from 'components/textArea/TextArea';
 import Button from 'components/button/Button';
 import IconCaret from 'components/icons/IconCaret';
+import Image from 'components/image/Image';
 import { saveUpdateAlbumAction, setEditAlbumAction } from '../addAlbumActions';
 import styles from './EditAlbum.module.scss';
 
@@ -16,7 +17,7 @@ interface EditAlbumProps {
 }
 const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
   const dispatch = useDispatch();
-  const { editAlbum, editAlbumId } = useSelector(
+  const { editAlbum, editAlbumArt, editAlbumId } = useSelector(
     (state: RootState) => state.addAlbum
   );
 
@@ -70,7 +71,13 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
           <div className={styles.artInfo}>
             <div className={styles.art}>
               <div className={styles.artText}>Album Art</div>
-              <div className={styles.artImage} />
+              {!editAlbumArt?.base64 && <div className={styles.artImage} />}
+              {editAlbumArt?.base64 && (
+                <Image
+                  className={styles.artImage}
+                  src={`data:image/jpeg;base64,${editAlbumArt.base64}`}
+                />
+              )}
             </div>
 
             <div className={styles.info}>

@@ -10,7 +10,7 @@ export interface ButtonProps {
   name?: 'string;';
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  styleType?: 'basic' | 'text' | 'fullWidth' | 'tile';
+  styleType?: 'basic' | 'text' | 'fullWidth' | 'tile' | 'listItem';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 const Button = ({
@@ -32,7 +32,8 @@ const Button = ({
         basic: styleType === 'basic',
         text: styleType === 'text',
         fullWidth: styleType === 'fullWidth',
-        tile: styleType === 'tile'
+        tile: styleType === 'tile',
+        listItem: styleType === 'listItem'
       })}
       onTouchStart={() => {}}
     >

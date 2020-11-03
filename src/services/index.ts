@@ -88,3 +88,17 @@ export const deleteRequest = async (
     return formatErrorResponse(err.response);
   }
 };
+
+// for external calls
+export const getArrayBufferRequest = async (url: string) => {
+  try {
+    const res = await fetch(url);
+    return await res.arrayBuffer();
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('getArrayBufferRequest failed', err);
+    }
+
+    return err;
+  }
+};

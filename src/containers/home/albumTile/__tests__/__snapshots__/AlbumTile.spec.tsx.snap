@@ -11,6 +11,7 @@ exports[`<AlbumTile/> component should render 1`] = `
     >
       <div
         class="art"
+        draggable="false"
       />
       <div
         class="tag"

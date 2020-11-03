@@ -46,4 +46,12 @@
       transition: transform 0.3s;
     }
   }
+
+  &.listItem {
+    &:active {
+      -webkit-tap-highlight-color: transparent;
+      transform: scale(0.99);
+      transition: transform 0.3s;
+    }
+  }
 }

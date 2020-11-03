@@ -17,7 +17,10 @@ export interface AddAlbumState {
     genre: string;
     shelf: string;
     comments: string;
-    albumArt: string | null;
+  };
+  editAlbumArt: {
+    base64: string | null;
+    url: string;
   };
   openEditAlbumView: boolean;
 }
@@ -35,8 +38,11 @@ const initialState: AddAlbumState = {
     year: '',
     genre: '',
     shelf: '',
-    comments: '',
-    albumArt: null
+    comments: ''
+  },
+  editAlbumArt: {
+    base64: null,
+    url: ''
   },
   openEditAlbumView: false
 };
@@ -72,6 +78,9 @@ const addAlbumReducer = (
         editAlbum: {
           ...initialState.editAlbum
         },
+        editAlbumArt: {
+          ...initialState.editAlbumArt
+        },
         editAlbumId: null
       };
     case addAlbumActions.SET_EDIT_ALBUM:
@@ -82,6 +91,14 @@ const addAlbumReducer = (
           ? data.albumId
           : state.editAlbumId,
         openEditAlbumView: true
+      };
+    case addAlbumActions.SET_EDIT_ALBUM_ART:
+      return {
+        ...state,
+        editAlbumArt: {
+          base64: data?.base64 ?? null,
+          url: data?.url ?? ''
+        }
       };
     case addAlbumActions.CLEAR_EDIT_ALBUM_VIEW_STATE:
       return {

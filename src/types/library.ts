@@ -6,7 +6,7 @@ export type Album = {
   genre?: string;
   shelf?: string;
   comments?: string;
-  albumArt?: string | null;
+  artBase64?: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -18,5 +18,4 @@ export type EditAlbumFormValues = {
   genre: string;
   shelf: string;
   comments: string;
-  albumArt: string | null;
 };

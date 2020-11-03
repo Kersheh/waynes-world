@@ -25,6 +25,7 @@ const Image = ({ src, alt, className }: ImageProps) => {
         alt={alt}
         onLoad={() => setIsLoaded(true)}
         className={className}
+        draggable={false}
       />
       {!isLoaded && (
         <div

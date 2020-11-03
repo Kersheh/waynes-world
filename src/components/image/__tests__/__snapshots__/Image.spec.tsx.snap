@@ -6,6 +6,7 @@ exports[`<Image/> component should render 1`] = `
     class="image"
   >
     <img
+      draggable="false"
       src="/some/image/src"
       style="display: none;"
     />

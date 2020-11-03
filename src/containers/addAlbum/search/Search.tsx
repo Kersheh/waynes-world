@@ -11,7 +11,8 @@ import SearchResult from './searchResult/SearchResult';
 import {
   searchSpotifyAction,
   clearSearchQueryAction,
-  setEditAlbumAction
+  setEditAlbumAction,
+  fetchExternalAlbumArtAction
 } from '../addAlbumActions';
 import styles from './Search.module.scss';
 
@@ -97,7 +98,14 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                     <SearchResult
                       key={`${album.name}-${index}`}
                       album={album}
-                      onClick={() =>
+                      onClick={() => {
+                        // if spotify image exists, dispatch in parallel with set edit
+                        if (album?.images[0].url) {
+                          dispatch(
+                            fetchExternalAlbumArtAction(album.images[0].url)
+                          );
+                        }
+
                         dispatch(
                           setEditAlbumAction({
                             album: {
@@ -106,12 +114,11 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                               year: getYear(parseISO(album.release_date)),
                               genre: '',
                               shelf: '',
-                              comments: '',
-                              albumArt: null
+                              comments: ''
                             }
                           })
-                        )
-                      }
+                        );
+                      }}
                     />
                   ))}
 

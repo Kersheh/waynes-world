@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import Button from 'components/button/Button';
+import Image from 'components/image/Image';
 import { openAlbumInLibraryAction } from '../homeActions';
 import styles from './AlbumTile.module.scss';
 
@@ -9,9 +10,9 @@ interface AlbumTileProps {
   album: string;
   artist: string;
   id: string;
-  // src?: any; // TODO
+  artBase64?: string;
 }
-const AlbumTile = ({ album, artist, id }: AlbumTileProps) => {
+const AlbumTile = ({ album, artist, id, artBase64 }: AlbumTileProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -20,7 +21,13 @@ const AlbumTile = ({ album, artist, id }: AlbumTileProps) => {
       styleType="tile"
     >
       <div className={styles.albumTile}>
-        <div className={styles.art} />
+        {!artBase64 && <div className={styles.art} draggable="false" />}
+        {artBase64 && (
+          <Image
+            className={styles.art}
+            src={`data:image/jpeg;base64,${artBase64}`}
+          />
+        )}
 
         <div className={styles.tag}>
           <div className={styles.album}>{album}</div>

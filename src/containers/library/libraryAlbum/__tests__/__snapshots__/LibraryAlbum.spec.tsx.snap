@@ -6,11 +6,12 @@ exports[`<LibraryAlbum/> component should render 1`] = `
     class="libraryAlbum"
   >
     <button
-      class="button text"
+      class="button listItem"
       type="button"
     >
       <div
         class="albumArt"
+        draggable="false"
       />
       <div
         class="info"
