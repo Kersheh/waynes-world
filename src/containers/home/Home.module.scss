@@ -5,6 +5,7 @@
 
   .albumScroll {
     display: flex;
+    align-items: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
     margin: 0 -1.8rem 1rem;

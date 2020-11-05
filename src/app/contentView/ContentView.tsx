@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from 'types';
-import Button from 'components/button/Button';
 import Home from 'containers/home/Home';
 import AddAlbum from 'containers/addAlbum/AddAlbum';
 import Library from 'containers/library/Library';
@@ -14,22 +13,13 @@ const ContentView = () => {
   const { activeView } = useSelector((state: RootState) => state.app);
   const { message } = useSelector((state: RootState) => state.error);
 
+  // debug; reset store
+  if (false) {
+    dispatch({ type: 'PURGE', key: 'root', result: () => null })
+  }
+
   return (
     <div className={styles.contentView}>
-      {true && (
-        <div className={styles.resetBtn}>
-          {false && (
-            <Button
-              onClick={() =>
-                dispatch({ type: 'PURGE', key: 'root', result: () => null })
-              }
-            >
-              @
-            </Button>
-          )}
-        </div>
-      )}
-
       {activeView === 'home' && <Home />}
       {activeView === 'addAlbum' && <AddAlbum />}
       {activeView === 'library' && <Library />}

@@ -1,6 +1,6 @@
 const constants = {
   config: {
-    API: 'http://localhost:3100'
+    API: 'http://192.168.86.26:3100'
   }
 };
 

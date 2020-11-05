@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, Album } from 'types';
-import { getLibraryAction } from './libraryActions';
+import { getLibraryAction, clearAlbumView } from './libraryActions';
 import AlbumView from './albumView/AlbumView';
 import LibraryAlbum from './libraryAlbum/LibraryAlbum';
 import styles from './Library.module.scss';
@@ -17,6 +17,11 @@ const LibraryContainer = () => {
     if (!activeAlbumId) {
       dispatch(getLibraryAction());
     }
+
+    // clear album view on library exit
+    return () => {
+      dispatch(clearAlbumView());
+    };
   }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

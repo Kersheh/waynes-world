@@ -5,7 +5,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
     "lint": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' && stylelint --config .stylelintrc.yml 'src/**/*.scss'",
     "lint:fix": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' --fix && stylelint --fix --config .stylelintrc.yml 'src/**/*.scss'",
     "prod:up": "docker-compose up -d",

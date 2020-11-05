@@ -19,9 +19,6 @@ exports[`<App/> component should render 1`] = `
         class="contentView"
       >
         <div
-          class="resetBtn"
-        />
-        <div
           class="home"
         >
           <h2>

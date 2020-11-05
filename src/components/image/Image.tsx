@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './Image.module.scss';
@@ -12,10 +12,6 @@ interface ImageProps {
 }
 const Image = ({ src, alt, className }: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [src]);
 
   return (
     <div className={styles.image}>
