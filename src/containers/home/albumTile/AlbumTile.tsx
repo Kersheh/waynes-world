@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { parseISO, format } from 'date-fns';
 
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
@@ -10,9 +11,10 @@ interface AlbumTileProps {
   album: string;
   artist: string;
   id: string;
+  createdAt: string;
   artBase64?: string;
 }
-const AlbumTile = ({ album, artist, id, artBase64 }: AlbumTileProps) => {
+const AlbumTile = ({ album, artist, id, createdAt, artBase64 }: AlbumTileProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -32,6 +34,7 @@ const AlbumTile = ({ album, artist, id, artBase64 }: AlbumTileProps) => {
         <div className={styles.tag}>
           <div className={styles.album}>{album}</div>
           <div className={styles.artist}>{artist}</div>
+          <div className={styles.timestamp}>Added {format(parseISO(createdAt), 'MMM dd, yyyy')}</div>
         </div>
       </div>
     </Button>

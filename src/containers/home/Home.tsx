@@ -26,6 +26,7 @@ const HomeContainer = () => {
                 album={album.album}
                 artist={album.artist}
                 id={album.id}
+                createdAt={album.createdAt}
                 artBase64={album.artBase64}
                 key={`${album.album}-${index}`}
               />
@@ -41,6 +42,7 @@ const HomeContainer = () => {
                 album={album.album}
                 artist={album.artist}
                 id={album.id}
+                createdAt={album.createdAt}
                 artBase64={album.artBase64}
                 key={`${album.album}-${index}`}
               />

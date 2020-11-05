@@ -26,6 +26,12 @@ exports[`<AlbumTile/> component should render 1`] = `
         >
           Artist
         </div>
+        <div
+          class="timestamp"
+        >
+          Added 
+          Nov 30, 2020
+        </div>
       </div>
     </div>
   </button>
