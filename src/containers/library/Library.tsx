@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames/bind';
 
 import { RootState, Album } from 'types';
 import { getLibraryAction, clearAlbumView } from './libraryActions';
 import AlbumView from './albumView/AlbumView';
 import LibraryAlbum from './libraryAlbum/LibraryAlbum';
 import styles from './Library.module.scss';
+
+const cx = classNames.bind(styles);
 
 const LibraryContainer = () => {
   const dispatch = useDispatch();
@@ -25,7 +28,12 @@ const LibraryContainer = () => {
   }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className={styles.library}>
+    <div
+      className={cx({
+        library: true,
+        main: !activeAlbumId
+      })}
+    >
       {activeAlbumId && (
         <AlbumView
           album={

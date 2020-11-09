@@ -2,6 +2,8 @@
 @import 'src/styles/abstract/constants';
 
 .library {
-  @include view-margin;
-  margin-bottom: 102px;
+  &.main {
+    @include view-margin;
+    margin-bottom: 102px;
+  }
 }

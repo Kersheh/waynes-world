@@ -9,15 +9,19 @@ interface TextAreaProps {
   required?: boolean;
   maxLength?: number;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  readOnlyValue?: string;
 }
 const TextArea = ({
   name,
   label,
   required,
   maxLength,
-  onChange
+  onChange,
+  readOnlyValue
 }: TextAreaProps) => {
-  const { watch, register } = useFormContext();
+  const { watch, register } = readOnlyValue
+    ? { watch: null, register: null }
+    : useFormContext(); // eslint-disable-line react-hooks/rules-of-hooks
 
   return (
     <div className={styles.textArea}>
@@ -31,10 +35,12 @@ const TextArea = ({
         name={name}
         required={required}
         maxLength={maxLength}
-        ref={register}
+        ref={readOnlyValue ? undefined : register}
         onChange={onChange}
+        defaultValue={readOnlyValue || undefined}
+        disabled={!!readOnlyValue}
       />
-      {maxLength && (
+      {maxLength && watch && (
         <div className={styles.counter}>
           {watch()[name]?.length ?? 0} / {maxLength}
         </div>

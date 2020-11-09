@@ -26,6 +26,7 @@
     "@types/redux-logger": "^3.0.8",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "colorthief": "^2.3.2",
     "date-fns": "^2.16.1",
     "lodash": "^4.17.20",
     "mutationobserver-shim": "^0.3.7",

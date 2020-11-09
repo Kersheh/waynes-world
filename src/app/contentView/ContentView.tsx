@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { RootState } from 'types';
 import Home from 'containers/home/Home';
@@ -9,14 +9,14 @@ import Error from 'containers/error/Error';
 import styles from './ContentView.module.scss';
 
 const ContentView = () => {
-  const dispatch = useDispatch();
   const { activeView } = useSelector((state: RootState) => state.app);
   const { message } = useSelector((state: RootState) => state.error);
 
   // debug; reset store
-  if (false) {
-    dispatch({ type: 'PURGE', key: 'root', result: () => null })
-  }
+  // const dispatch = useDispatch();
+  // if (false) {
+  //   dispatch({ type: 'PURGE', key: 'root', result: () => null });
+  // }
 
   return (
     <div className={styles.contentView}>

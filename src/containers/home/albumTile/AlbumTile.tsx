@@ -14,7 +14,13 @@ interface AlbumTileProps {
   createdAt: string;
   artBase64?: string;
 }
-const AlbumTile = ({ album, artist, id, createdAt, artBase64 }: AlbumTileProps) => {
+const AlbumTile = ({
+  album,
+  artist,
+  id,
+  createdAt,
+  artBase64
+}: AlbumTileProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +40,9 @@ const AlbumTile = ({ album, artist, id, createdAt, artBase64 }: AlbumTileProps) 
         <div className={styles.tag}>
           <div className={styles.album}>{album}</div>
           <div className={styles.artist}>{artist}</div>
-          <div className={styles.timestamp}>Added {format(parseISO(createdAt), 'MMM dd, yyyy')}</div>
+          <div className={styles.timestamp}>
+            Added {format(parseISO(createdAt), 'MMM dd, yyyy')}
+          </div>
         </div>
       </div>
     </Button>
