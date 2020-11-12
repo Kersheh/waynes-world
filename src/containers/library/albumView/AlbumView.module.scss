@@ -47,7 +47,8 @@
       align-items: center;
     }
 
-    .artImg {
+    &Img,
+    &Missing {
       width: 50%;
       border: 1px solid rgba($primary-grey, 0.2);
     }

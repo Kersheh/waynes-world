@@ -35,7 +35,7 @@ const AlbumView = ({ album }: AlbumViewProps) => {
       >
         <div className={styles.art}>
           {!album.artBase64 && (
-            <div className={styles.albumArt} draggable="false" />
+            <div className={styles.artMissing} draggable="false">Testing</div>
           )}
           {album.artBase64 && (
             <Image
@@ -52,8 +52,8 @@ const AlbumView = ({ album }: AlbumViewProps) => {
           <div className={styles.left}>
             <div className={styles.album}>{album.album}</div>
             <div className={styles.artist}>{album.artist}</div>
-            <div className={styles.year}>Album · {album.year}</div>
-            <div className={styles.genre}>{album.genre}</div>
+            {album.year && <div className={styles.year}>Album · {album.year}</div>}
+            {album.genre && <div className={styles.genre}>{album.genre}</div>}
           </div>
 
           <div className={styles.right}>
