@@ -9,9 +9,13 @@ enum libraryActions {
   CLEAR_ALBUM_VIEW = 'CLEAR_ALBUM_VIEW'
 }
 
-export const getLibraryAction: ActionCreator<Action> = () => {
+export const getLibraryAction: ActionCreator<Action> = (data: {
+  sortBy?: string;
+  sortOrder?: string;
+}) => {
   return {
-    type: libraryActions.GET_LIBRARY
+    type: libraryActions.GET_LIBRARY,
+    data
   };
 };
 

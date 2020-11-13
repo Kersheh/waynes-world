@@ -3,10 +3,7 @@ import 'mutationobserver-shim';
 
 global.MutationObserver = window.MutationObserver;
 
-// jest.mock('colorthief', () => ({
-//   ColorThief: class {
-//     constructor() {
-//
-//     }
-//   }
-// }));
+jest.mock('colorthief', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => {})
+}));

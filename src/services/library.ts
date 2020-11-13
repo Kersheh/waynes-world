@@ -4,8 +4,8 @@ import constants from 'utils/constants';
 
 const { config } = constants;
 
-export const getLibrary = () => {
-  return getRequest(`${config.API}/library`);
+export const getLibrary = (sortBy = 'artist', sortOrder = 'asc') => {
+  return getRequest(`${config.API}/library?sort=${sortBy}&order=${sortOrder}`);
 };
 
 export const createAlbum = (data: RequestData) => {

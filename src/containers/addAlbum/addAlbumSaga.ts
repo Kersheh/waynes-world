@@ -73,8 +73,6 @@ function* saveUpdateAlbumSaga(action: Action) {
 }
 
 function* fetchExternalAlbumArtSaga(action: Action) {
-  console.log(action.data);
-
   const data = yield call(getArrayBufferRequest, action.data);
   const base64 = yield Buffer.from(data, 'binary').toString('base64');
 

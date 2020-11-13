@@ -3,7 +3,44 @@
 exports[`<Library/> component should render 1`] = `
 <div>
   <div
-    class="library"
-  />
+    class="library main"
+  >
+    <button
+      class="button text"
+      type="button"
+    >
+      Artist
+    </button>
+    <button
+      class="button text"
+      type="button"
+    >
+      Album
+    </button>
+    <button
+      class="button text"
+      type="button"
+    >
+      Genre
+    </button>
+    <button
+      class="button text"
+      type="button"
+    >
+      Date Added
+    </button>
+    <button
+      class="button text"
+      type="button"
+    >
+      Asc
+    </button>
+    <button
+      class="button text"
+      type="button"
+    >
+      Desc
+    </button>
+  </div>
 </div>
 `;

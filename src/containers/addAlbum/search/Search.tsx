@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { parseISO, getYear } from 'date-fns';
+import { startCase } from 'lodash';
 
 import { RootState, SpotifyAlbum } from 'types';
+import { getSpotifyAlbumByID, getSpotifyArtistByID } from 'services';
 import Button from 'components/button/Button';
 import IconSearch from 'components/icons/IconSearch';
 import SearchBar from './searchBar/SearchBar';
@@ -98,7 +100,7 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                     <SearchResult
                       key={`${album.name}-${index}`}
                       album={album}
-                      onClick={() => {
+                      onClick={async () => {
                         // if spotify image exists, dispatch in parallel with set edit
                         if (album?.images[0].url) {
                           dispatch(
@@ -106,13 +108,24 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                           );
                         }
 
+                        // fetch potential genre from spotify based on album then fallback to artist genre
+                        const albumInfo = await getSpotifyAlbumByID(album.id);
+                        let genre = albumInfo?.data?.body?.genres[0] ?? null;
+                        const artistID =
+                          albumInfo?.data?.body?.artists[0]?.id ?? '';
+                        const artistInfo =
+                          genre || (await getSpotifyArtistByID(artistID));
+                        genre =
+                          genre ||
+                          startCase(artistInfo?.data?.body?.genres[0] ?? '');
+
                         dispatch(
                           setEditAlbumAction({
                             album: {
                               artist: album.artists[0].name,
                               album: album.name,
                               year: getYear(parseISO(album.release_date)),
-                              genre: '',
+                              genre,
                               shelf: '',
                               comments: ''
                             }

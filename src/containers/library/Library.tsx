@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 
 import { RootState, Album } from 'types';
+import Button from 'components/button/Button';
 import { getLibraryAction, clearAlbumView } from './libraryActions';
 import AlbumView from './albumView/AlbumView';
 import LibraryAlbum from './libraryAlbum/LibraryAlbum';
@@ -15,6 +16,8 @@ const LibraryContainer = () => {
   const { albums, activeAlbumId } = useSelector(
     (state: RootState) => state.library
   );
+  const [sortBy, setSortBy] = useState('artist');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     if (!activeAlbumId) {
@@ -26,6 +29,17 @@ const LibraryContainer = () => {
       dispatch(clearAlbumView());
     };
   }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!activeAlbumId) {
+      dispatch(
+        getLibraryAction({
+          sortBy,
+          sortOrder
+        })
+      );
+    }
+  }, [sortBy, sortOrder]);
 
   return (
     <div
@@ -43,6 +57,13 @@ const LibraryContainer = () => {
       )}
       {!activeAlbumId && (
         <>
+          <Button onClick={() => setSortBy('artist')}>Artist</Button>
+          <Button onClick={() => setSortBy('album')}>Album</Button>
+          <Button onClick={() => setSortBy('genre')}>Genre</Button>
+          <Button onClick={() => setSortBy('createdAt')}>Date Added</Button>
+          <Button onClick={() => setSortOrder('asc')}>Asc</Button>
+          <Button onClick={() => setSortOrder('desc')}>Desc</Button>
+
           {albums?.map((album, index) => (
             <LibraryAlbum
               id={album.id}

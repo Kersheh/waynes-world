@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 export interface ButtonProps {
   children?: React.ReactNode;
-  name?: 'string;';
+  name?: string;
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
   styleType?: 'basic' | 'text' | 'fullWidth' | 'tile' | 'listItem';
