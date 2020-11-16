@@ -10,7 +10,15 @@ export interface ButtonProps {
   name?: string;
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  styleType?: 'basic' | 'text' | 'fullWidth' | 'tile' | 'listItem';
+  styleType?:
+    | 'basic'
+    | 'text'
+    | 'textIcon'
+    | 'icon'
+    | 'fullWidth'
+    | 'tile'
+    | 'listItem'
+    | 'outline';
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 const Button = ({
@@ -30,10 +38,13 @@ const Button = ({
       className={cx({
         button: true,
         basic: styleType === 'basic',
-        text: styleType === 'text',
+        text: styleType === 'text' || styleType === 'textIcon',
+        textIcon: styleType === 'textIcon',
+        icon: styleType === 'icon',
         fullWidth: styleType === 'fullWidth',
         tile: styleType === 'tile',
-        listItem: styleType === 'listItem'
+        listItem: styleType === 'listItem',
+        outline: styleType === 'outline'
       })}
       onTouchStart={() => {}}
     >

@@ -28,6 +28,19 @@
 
   &.text {
     font-weight: 600;
+
+    &Icon {
+      display: flex;
+      align-items: center;
+
+      > svg {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &.icon {
+    padding: 1rem;
   }
 
   &.fullWidth {
@@ -53,5 +66,11 @@
       transform: scale(0.99);
       transition: transform 0.3s;
     }
+  }
+
+  &.outline {
+    border: 1px solid $white;
+    border-radius: 3px;
+    padding: 0.6rem 1.4rem;
   }
 }

@@ -6,8 +6,16 @@ import { Album } from 'types';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
 import IconCaret from 'components/icons/IconCaret';
+import IconDelete from 'components/icons/IconDelete';
+import IconHeart from 'components/icons/IconHeart';
+import IconHeartOutline from 'components/icons/IconHeartOutline';
 import TextArea from 'components/textArea/TextArea';
-import { clearAlbumView } from '../libraryActions';
+import {
+  clearAlbumViewAction,
+  favouriteAlbumAction,
+  unfavouriteAlbumAction,
+  deleteAlbumAction
+} from '../libraryActions';
 import styles from './AlbumView.module.scss';
 
 interface AlbumViewProps {
@@ -16,13 +24,58 @@ interface AlbumViewProps {
 const AlbumView = ({ album }: AlbumViewProps) => {
   const dispatch = useDispatch();
   const [backgroundColor, setBackgroundColor] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.albumView}>
+      {showModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h1>Delete Album</h1>
+            <h4>Are you sure?</h4>
+
+            <div className={styles.modalBtns}>
+              <Button
+                styleType="outline"
+                onClick={() => dispatch(deleteAlbumAction(album.id))}
+              >
+                Yes
+              </Button>
+
+              <Button styleType="outline" onClick={() => setShowModal(false)}>
+                No
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className={styles.header}>
-        <Button onClick={() => dispatch(clearAlbumView())}>
+        <Button onClick={() => dispatch(clearAlbumViewAction())}>
           <IconCaret className={styles.left} />
         </Button>
+
+        <div className={styles.right}>
+          {album.favourite ? (
+            <Button
+              styleType="icon"
+              onClick={() => dispatch(unfavouriteAlbumAction(album.id))}
+            >
+              <IconHeart />
+            </Button>
+          ) : (
+            <Button
+              styleType="icon"
+              onClick={() => dispatch(favouriteAlbumAction(album.id))}
+            >
+              <IconHeartOutline />
+            </Button>
+          )}
+
+          <Button styleType="icon" onClick={() => setShowModal(true)}>
+            <IconDelete />
+          </Button>
+        </div>
       </div>
 
       <div

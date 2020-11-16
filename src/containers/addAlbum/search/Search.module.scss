@@ -40,6 +40,31 @@
     h4 {
       margin-top: 0;
     }
+
+    .headerSecondary {
+      position: relative;
+      top: -22px;
+      left: -18px;
+
+      > button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.1rem 1rem;
+        transform: scaleX(-1);
+
+        &:active {
+          -webkit-tap-highlight-color: transparent;
+          transform: scaleX(-1);
+        }
+
+        > svg {
+          height: 14px;
+          width: 14px;
+          fill: $white;
+        }
+      }
+    }
   }
 
   &Overlay {

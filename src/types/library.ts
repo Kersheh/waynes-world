@@ -9,6 +9,7 @@ export type Album = {
   artBase64?: string;
   createdAt: string;
   updatedAt: string;
+  favourite?: boolean;
 };
 
 export type EditAlbumFormValues = {

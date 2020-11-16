@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IconCaretProps {
-  className?: any;
+  className?: string;
 }
 const IconCaret = ({ className }: IconCaretProps) => {
   return (

@@ -6,7 +6,10 @@ enum libraryActions {
   GET_LIBRARY = 'GET_LIBRARY',
   GET_LIBRARY_SUCCESS = 'GET_LIBRARY_SUCCESS',
   SET_ALBUM_VIEW = 'SET_ALBUM_VIEW',
-  CLEAR_ALBUM_VIEW = 'CLEAR_ALBUM_VIEW'
+  CLEAR_ALBUM_VIEW = 'CLEAR_ALBUM_VIEW',
+  FAVOURITE_ALBUM = 'FAVOURITE_ALBUM',
+  UNFAVOURITE_ALBUM = 'UNFAVOURITE_ALBUM',
+  DELETE_ALBUM = 'DELETE_ALBUM'
 }
 
 export const getLibraryAction: ActionCreator<Action> = (data: {
@@ -35,9 +38,30 @@ export const setAlbumViewAction: ActionCreator<Action> = (data: string) => {
   };
 };
 
-export const clearAlbumView: ActionCreator<Action> = () => {
+export const clearAlbumViewAction: ActionCreator<Action> = () => {
   return {
     type: libraryActions.CLEAR_ALBUM_VIEW
+  };
+};
+
+export const favouriteAlbumAction: ActionCreator<Action> = (data: string) => {
+  return {
+    type: libraryActions.FAVOURITE_ALBUM,
+    data
+  };
+};
+
+export const unfavouriteAlbumAction: ActionCreator<Action> = (data: string) => {
+  return {
+    type: libraryActions.UNFAVOURITE_ALBUM,
+    data
+  };
+};
+
+export const deleteAlbumAction: ActionCreator<Action> = (data: string) => {
+  return {
+    type: libraryActions.DELETE_ALBUM,
+    data
   };
 };
 

@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 import { RootState, Album } from 'types';
 import Button from 'components/button/Button';
-import { getLibraryAction, clearAlbumView } from './libraryActions';
+import { getLibraryAction, clearAlbumViewAction } from './libraryActions';
 import AlbumView from './albumView/AlbumView';
 import LibraryAlbum from './libraryAlbum/LibraryAlbum';
 import styles from './Library.module.scss';
@@ -26,7 +26,7 @@ const LibraryContainer = () => {
 
     // clear album view on library exit
     return () => {
-      dispatch(clearAlbumView());
+      dispatch(clearAlbumViewAction());
     };
   }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -39,7 +39,7 @@ const LibraryContainer = () => {
         })
       );
     }
-  }, [sortBy, sortOrder]);
+  }, [dispatch, sortBy, sortOrder]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div

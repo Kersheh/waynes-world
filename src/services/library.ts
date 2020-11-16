@@ -19,3 +19,11 @@ export const updateAlbum = (id: string, data: RequestData) => {
 export const deleteAlbum = (id: string) => {
   return deleteRequest(`${config.API}/library/album/${id}`);
 };
+
+export const favouriteAlbum = (id: string) => {
+  return putRequest(`${config.API}/library/album/favourite/${id}`, {});
+};
+
+export const unfavouriteAlbum = (id: string) => {
+  return putRequest(`${config.API}/library/album/unfavourite/${id}`, {});
+};

@@ -33,6 +33,26 @@ const libraryReducer = (state = initialState, action: Action): LibraryState => {
         ...state,
         activeAlbumId: null
       };
+    case libraryActions.FAVOURITE_ALBUM:
+      return {
+        ...state,
+        albums: state.albums.map(album => {
+          return {
+            ...album,
+            favourite: album.id === data ? true : album.favourite
+          };
+        })
+      };
+    case libraryActions.UNFAVOURITE_ALBUM:
+      return {
+        ...state,
+        albums: state.albums.map(album => {
+          return {
+            ...album,
+            favourite: album.id === data ? false : album.favourite
+          };
+        })
+      };
     default:
       return state;
   }
