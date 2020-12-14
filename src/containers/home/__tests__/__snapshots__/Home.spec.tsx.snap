@@ -17,6 +17,18 @@ exports[`<Home/> component should render 1`] = `
     <div
       class="albumScroll"
     />
+    <h2>
+      Recently favourited
+    </h2>
+    <p>
+      No recently favourited albums found.
+    </p>
+    <div
+      class="albumScroll"
+    />
+    <div
+      class="albumScroll"
+    />
   </div>
 </div>
 `;

@@ -7,6 +7,7 @@ import {
   unfavouriteAlbum,
   deleteAlbum
 } from 'services';
+import { fetchLatestLibraryAfterUpdateSaga } from 'utils/sagaUtils';
 import { getErrorMessage } from 'containers/error/errorHelper';
 import { setAppLoadingAction } from 'app/appActions';
 import { setErrorMessageAction } from 'containers/error/errorActions';
@@ -25,10 +26,14 @@ function* getLibrarySaga(action: Action) {
   );
 
   if (res.status === 200) {
+    console.log(
+      "TODO: Fix \"Error storing data DOMException: Failed to execute 'setItem' on 'Storage': Setting the value of 'persist:root' exceeded the quota.\""
+    );
     yield put(
       getLibrarySuccessAction({
         albums: res.data.albumsAll,
-        recentlyAddedAlbums: res.data.albumsRecentlyAdded
+        recentlyAddedAlbums: res.data.albumsRecentlyAdded,
+        favouriteAlbums: res.data.albumsFavourite
       })
     );
   } else {
@@ -40,16 +45,18 @@ function* getLibrarySaga(action: Action) {
 
 function* favouriteAlbumSaga(action: Action) {
   yield call(favouriteAlbum, action.data);
+  yield call(fetchLatestLibraryAfterUpdateSaga);
 }
 
 function* unfavouriteAlbumSaga(action: Action) {
   yield call(unfavouriteAlbum, action.data);
+  yield call(fetchLatestLibraryAfterUpdateSaga);
 }
 
 function* deleteAlbumSaga(action: Action) {
   yield call(deleteAlbum, action.data);
   yield put(clearAlbumViewAction());
-  yield call(getLibrarySaga, action);
+  yield call(fetchLatestLibraryAfterUpdateSaga);
 }
 
 export function* librarySaga() {
