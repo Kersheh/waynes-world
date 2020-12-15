@@ -27,14 +27,14 @@ const libraryReducer = (state = initialState, action: Action): LibraryState => {
   const { type, data } = action;
 
   switch (type) {
-    // case libraryActions.GET_LIBRARY:
-    //   return {
-    //     ...state,
-    //     sort: {
-    //       by: data?.sortBy ?? initialState.sort.by,
-    //       order: data?.sortOrder ?? initialState.sort.order
-    //     }
-    //   };
+    case libraryActions.GET_LIBRARY:
+      return {
+        ...state,
+        sort: {
+          by: data?.sortBy ?? initialState.sort.by,
+          order: data?.sortOrder ?? initialState.sort.order
+        }
+      };
     case libraryActions.GET_LIBRARY_SUCCESS:
       return {
         ...state,

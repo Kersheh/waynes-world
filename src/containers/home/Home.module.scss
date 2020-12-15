@@ -21,5 +21,9 @@
     &:last-of-type {
       margin-bottom: 0;
     }
+
+    > button:not(:last-of-type) {
+      max-width: 130px;
+    }
   }
 }
