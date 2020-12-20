@@ -26,9 +26,6 @@ function* getLibrarySaga(action: Action) {
   );
 
   if (res.status === 200) {
-    console.log(
-      "TODO: Fix \"Error storing data DOMException: Failed to execute 'setItem' on 'Storage': Setting the value of 'persist:root' exceeded the quota.\""
-    );
     yield put(
       getLibrarySuccessAction({
         albums: res.data.albumsAll,

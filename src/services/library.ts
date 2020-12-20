@@ -8,6 +8,10 @@ export const getLibrary = (sortBy = 'artist', sortOrder = 'asc') => {
   return getRequest(`${config.API}/library?sort=${sortBy}&order=${sortOrder}`);
 };
 
+export const getAlbumArt = (id: string) => {
+  return getRequest(`${config.API}/library/album/art/${id}`);
+};
+
 export const createAlbum = (data: RequestData) => {
   return postRequest(`${config.API}/library/album`, data);
 };

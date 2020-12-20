@@ -12,7 +12,7 @@
     width: 42px;
     height: 42px;
     border: solid $white 1px;
-    background-color: $background-dark-grey;
+    background: no-repeat center/60% url('/images/placeholder.svg') $background-dark-grey;
   }
 
   .info {

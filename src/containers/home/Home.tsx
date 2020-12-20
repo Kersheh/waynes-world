@@ -31,7 +31,6 @@ const AlbumRowsLayout = ({
                 artist={album.artist}
                 id={album.id}
                 createdAt={album.createdAt}
-                artBase64={album.artBase64}
                 key={`${album.album}-${index}`}
               />
             ))}
@@ -48,7 +47,6 @@ const AlbumRowsLayout = ({
                     artist={album.artist}
                     id={album.id}
                     createdAt={album.createdAt}
-                    artBase64={album.artBase64}
                     key={`${album.album}-${index}`}
                   />
                 )
@@ -64,7 +62,6 @@ const AlbumRowsLayout = ({
                     artist={album.artist}
                     id={album.id}
                     createdAt={album.createdAt}
-                    artBase64={album.artBase64}
                     key={`${album.album}-${index}`}
                   />
                 )

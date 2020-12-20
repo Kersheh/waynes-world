@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 
+import { fetchAlbumArt } from 'utils/serviceUtil';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
 import { openAlbumInLibraryAction } from '../homeActions';
@@ -12,16 +13,16 @@ interface AlbumTileProps {
   artist: string;
   id: string;
   createdAt: string;
-  artBase64?: string;
 }
-const AlbumTile = ({
-  album,
-  artist,
-  id,
-  createdAt,
-  artBase64
-}: AlbumTileProps) => {
+const AlbumTile = ({ album, artist, id, createdAt }: AlbumTileProps) => {
   const dispatch = useDispatch();
+
+  const [artBase64, setArtBase64] = useState<string | null>(null);
+
+  // fetch potential album art from backend
+  useEffect(() => {
+    fetchAlbumArt(id, setArtBase64);
+  }, [id]);
 
   return (
     <Button

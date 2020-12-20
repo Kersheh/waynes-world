@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 
+import { fetchAlbumArt } from 'utils/serviceUtil';
 import { Album } from 'types';
 import Button from 'components/button/Button';
 import Image from 'components/image/Image';
@@ -25,6 +26,12 @@ const AlbumView = ({ album }: AlbumViewProps) => {
   const dispatch = useDispatch();
   const [backgroundColor, setBackgroundColor] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [artBase64, setArtBase64] = useState<string | null>(null);
+
+  // fetch potential album art from backend
+  useEffect(() => {
+    fetchAlbumArt(album.id, setArtBase64);
+  }, [album.id]);
 
   return (
     <div className={styles.albumView}>
@@ -87,15 +94,15 @@ const AlbumView = ({ album }: AlbumViewProps) => {
         }}
       >
         <div className={styles.art}>
-          {!album.artBase64 && (
+          {!artBase64 && (
             <div className={styles.artMissing} draggable="false">
               Testing
             </div>
           )}
-          {album.artBase64 && (
+          {artBase64 && (
             <Image
               className={styles.artImg}
-              src={`data:image/jpeg;base64,${album.artBase64}`}
+              src={`data:image/jpeg;base64,${artBase64}`}
               getImgDominantHexColor={setBackgroundColor}
             />
           )}
