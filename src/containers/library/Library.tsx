@@ -20,10 +20,6 @@ const LibraryContainer = () => {
   const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
-    if (!activeAlbumId) {
-      dispatch(getLibraryAction());
-    }
-
     // clear album view on library exit
     return () => {
       dispatch(clearAlbumViewAction());

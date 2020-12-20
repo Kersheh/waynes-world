@@ -17,7 +17,9 @@ import libraryActions, {
 } from './libraryActions';
 
 function* getLibrarySaga(action: Action) {
-  yield put(setAppLoadingAction(true));
+  if (!action.data?.disableLoadingIndicator) {
+    yield put(setAppLoadingAction(true));
+  }
 
   const res = yield call(
     getLibrary,
@@ -37,23 +39,25 @@ function* getLibrarySaga(action: Action) {
     yield put(setErrorMessageAction(getErrorMessage(res)));
   }
 
-  yield put(setAppLoadingAction(false));
+  if (!action.data?.disableLoadingIndicator) {
+    yield put(setAppLoadingAction(false));
+  }
 }
 
 function* favouriteAlbumSaga(action: Action) {
   yield call(favouriteAlbum, action.data);
-  yield call(fetchLatestLibraryAfterUpdateSaga);
+  yield call(fetchLatestLibraryAfterUpdateSaga, true);
 }
 
 function* unfavouriteAlbumSaga(action: Action) {
   yield call(unfavouriteAlbum, action.data);
-  yield call(fetchLatestLibraryAfterUpdateSaga);
+  yield call(fetchLatestLibraryAfterUpdateSaga, true);
 }
 
 function* deleteAlbumSaga(action: Action) {
   yield call(deleteAlbum, action.data);
   yield put(clearAlbumViewAction());
-  yield call(fetchLatestLibraryAfterUpdateSaga);
+  yield call(fetchLatestLibraryAfterUpdateSaga, true);
 }
 
 export function* librarySaga() {

@@ -42,15 +42,15 @@ const AlbumView = ({ album }: AlbumViewProps) => {
             <h4>Are you sure?</h4>
 
             <div className={styles.modalBtns}>
+              <Button styleType="outline" onClick={() => setShowModal(false)}>
+                No
+              </Button>
+
               <Button
                 styleType="outline"
                 onClick={() => dispatch(deleteAlbumAction(album.id))}
               >
                 Yes
-              </Button>
-
-              <Button styleType="outline" onClick={() => setShowModal(false)}>
-                No
               </Button>
             </div>
           </div>
@@ -95,9 +95,7 @@ const AlbumView = ({ album }: AlbumViewProps) => {
       >
         <div className={styles.art}>
           {!artBase64 && (
-            <div className={styles.artMissing} draggable="false">
-              Testing
-            </div>
+            <div className={styles.artMissing} draggable="false" />
           )}
           {artBase64 && (
             <Image

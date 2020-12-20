@@ -81,9 +81,7 @@ exports[`<AlbumView/> component should render 1`] = `
         <div
           class="artMissing"
           draggable="false"
-        >
-          Testing
-        </div>
+        />
       </div>
     </div>
     <div

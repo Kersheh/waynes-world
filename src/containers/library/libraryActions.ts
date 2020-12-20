@@ -15,6 +15,7 @@ enum libraryActions {
 export const getLibraryAction: ActionCreator<Action> = (data: {
   sortBy?: string;
   sortOrder?: string;
+  disableLoadingIndicator?: boolean;
 }) => {
   return {
     type: libraryActions.GET_LIBRARY,
