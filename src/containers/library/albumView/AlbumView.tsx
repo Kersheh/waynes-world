@@ -30,7 +30,9 @@ const AlbumView = ({ album }: AlbumViewProps) => {
 
   // fetch potential album art from backend
   useEffect(() => {
-    fetchAlbumArt(album.id, setArtBase64);
+    if (album.id) {
+      fetchAlbumArt(album.id, setArtBase64);
+    }
   }, [album.id]);
 
   return (

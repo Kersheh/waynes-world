@@ -58,8 +58,9 @@
 
     &Img,
     &Missing {
-      width: 50%;
       height: 50vw;
+      max-height: 200px;
+      min-width: 200px;
       background-color: $background-dark-grey;
       border: solid $white 1px;
     }

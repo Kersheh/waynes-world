@@ -24,8 +24,12 @@ export const setNewAlbumWithSpotifyInfo = async (
   dispatch: any
 ) => {
   // if spotify image exists, dispatch in parallel with set edit
-  if (album?.images[0].url) {
-    dispatch(fetchExternalAlbumArtAction(album.images[0].url));
+  if (album?.images.length > 0) {
+    dispatch(
+      fetchExternalAlbumArtAction(
+        album.images?.find(img => img.height < 640)?.url
+      )
+    );
   }
 
   // fetch potential genre from spotify based on album then fallback to artist genre
