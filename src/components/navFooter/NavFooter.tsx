@@ -10,6 +10,7 @@ import IconLibraryOutline from 'components/icons/IconLibraryOutline';
 import IconPlus from 'components/icons/IconPlus';
 import IconPlusOutline from 'components/icons/IconPlusOutline';
 import { setActiveViewAction } from 'app/appActions';
+import { clearEditAlbumAction } from 'containers/addAlbum/addAlbumActions';
 import styles from './NavFooter.module.scss';
 
 const NavFooter = () => {
@@ -30,7 +31,14 @@ const NavFooter = () => {
         </Button>
 
         <Button
-          onClick={() => dispatch(setActiveViewAction('addAlbum'))}
+          onClick={() => {
+            dispatch(setActiveViewAction('addAlbum'));
+
+            // clear edit album view if navigating from home/library
+            if (activeView !== 'addAlbum') {
+              dispatch(clearEditAlbumAction());
+            }
+          }}
           styleType="fullWidth"
         >
           <div className={styles.content}>
