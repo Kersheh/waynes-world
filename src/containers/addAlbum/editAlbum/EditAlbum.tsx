@@ -14,8 +14,12 @@ import styles from './EditAlbum.module.scss';
 
 interface EditAlbumProps {
   setShowEditAlbum: React.Dispatch<React.SetStateAction<boolean>>;
+  closeOnSave?: boolean;
 }
-const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
+const EditAlbum = ({
+  setShowEditAlbum,
+  closeOnSave = false
+}: EditAlbumProps) => {
   const dispatch = useDispatch();
   const { editAlbum, editAlbumArt, editAlbumId } = useSelector(
     (state: RootState) => state.addAlbum
@@ -58,6 +62,10 @@ const EditAlbum = ({ setShowEditAlbum }: EditAlbumProps) => {
                   album: methods.getValues()
                 })
               );
+
+              if (closeOnSave) {
+                setShowEditAlbum(false);
+              }
             }
           }}
         >

@@ -60,11 +60,7 @@ const AddAlbumContainer = () => {
         </>
       )}
 
-      {showEditAlbum && (
-        <>
-          <EditAlbum setShowEditAlbum={setShowEditAlbum} />
-        </>
-      )}
+      {showEditAlbum && <EditAlbum setShowEditAlbum={setShowEditAlbum} />}
     </div>
   );
 };
