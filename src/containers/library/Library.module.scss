@@ -1,9 +1,36 @@
 @import 'src/styles/abstract/mixins';
 @import 'src/styles/abstract/constants';
+@import 'src/styles/abstract/colors';
 
 .library {
   &.main {
     @include view-margin;
+    margin-top: 0;
     // margin-bottom: 102px;
+  }
+
+  .sortBtns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    > button {
+      display: flex;
+      flex: 1;
+      padding: 0;
+
+      &:last-of-type {
+        flex-basis: 10px;
+      }
+
+      > svg {
+        width: 20px;
+        height: 20px;
+
+        path {
+          fill: $persian-green;
+        }
+      }
+    }
   }
 }

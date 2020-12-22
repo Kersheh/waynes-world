@@ -64,7 +64,7 @@ const AlbumView = ({ album }: AlbumViewProps) => {
       );
       dispatch(setEditAlbumArtAction({ base64: artBase64 }));
     }
-  }, [album, dispatch, showEditAlbum, artBase64]);
+  }, [album, dispatch, showEditAlbum]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

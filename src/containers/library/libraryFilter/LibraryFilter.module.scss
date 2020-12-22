@@ -1,14 +1,16 @@
 @import 'src/styles/abstract/colors';
 
-.searchBar {
+.libraryFilter {
   width: 100%;
+  margin: 1rem 0 0.5rem;
+  position: relative;
 
   > svg {
     position: absolute;
     width: 20px;
     height: 20px;
-    top: 16px;
-    left: 22px;
+    top: 5px;
+    left: 7px;
   }
 
   > input {
