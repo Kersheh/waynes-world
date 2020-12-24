@@ -9,6 +9,26 @@
     // margin-bottom: 102px;
   }
 
+  .sortSplit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > hr {
+      flex: 1;
+      border-color: $primary-grey;
+      margin: 0.3rem 0;
+    }
+
+    > span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $primary-grey;
+      line-height: 0.4rem;
+      margin-left: 8px;
+    }
+  }
+
   .sortBtns {
     display: flex;
     justify-content: space-between;

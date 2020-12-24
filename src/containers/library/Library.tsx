@@ -15,13 +15,68 @@ import styles from './Library.module.scss';
 
 const cx = classNames.bind(styles);
 
+interface LibraryListProps {
+  albums: Array<Album>;
+  sortBy: 'artist' | 'album' | 'genre' | 'createdAt';
+}
+const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
+  let sortSplit = '';
+
+  return (
+    <>
+      {albums?.map((album, index) => {
+        let sortMarker = false;
+        switch (sortBy) {
+          case 'artist':
+            if (sortSplit !== album.artist.slice(0, 1).toUpperCase()) {
+              sortSplit = album.artist.slice(0, 1).toUpperCase();
+              sortMarker = true;
+            }
+            break;
+          case 'album':
+            if (sortSplit !== album.album.slice(0, 1).toUpperCase()) {
+              sortSplit = album.album.slice(0, 1).toUpperCase();
+              sortMarker = true;
+            }
+            break;
+          case 'genre':
+            if (sortSplit !== album.genre?.toUpperCase()) {
+              sortSplit = album.genre?.toUpperCase() ?? '';
+              sortMarker = true;
+            }
+            break;
+        }
+
+        return (
+          <div key={`${album.album}-${index}`}>
+            {sortMarker && (
+              <div className={styles.sortSplit}>
+                <hr />
+                <span>{sortSplit}</span>
+              </div>
+            )}
+            <LibraryAlbum
+              id={album.id}
+              album={album.album}
+              artist={album.artist}
+              isFavourite={album.favourite}
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
 const LibraryContainer = () => {
   const dispatch = useDispatch();
   const { albums, activeAlbumId } = useSelector(
     (state: RootState) => state.library
   );
-  const [sortBy, setSortBy] = useState('artist');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortBy, setSortBy] = useState<
+    'artist' | 'album' | 'genre' | 'createdAt'
+  >('artist');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filterQuery, setFilterQuery] = useState<string>('');
   const [filterFavourite, setFilterFavourite] = useState(false);
   const setFilterQueryThrottled = useCallback(
@@ -138,15 +193,7 @@ const LibraryContainer = () => {
 
           {albumsFiltered?.length === 0 && <p>No albums found.</p>}
 
-          {albumsFiltered?.map((album, index) => (
-            <LibraryAlbum
-              id={album.id}
-              album={album.album}
-              artist={album.artist}
-              isFavourite={album.favourite}
-              key={`${album.album}-${index}`}
-            />
-          ))}
+          <LibraryList albums={albumsFiltered} sortBy={sortBy} />
         </>
       )}
     </div>

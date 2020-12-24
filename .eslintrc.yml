@@ -29,6 +29,7 @@
     project: './tsconfig.json'
   rules:
     linebreak-style: 'off'
+    default-case: 'off'
     prettier/prettier:
       - 'error'
       -
