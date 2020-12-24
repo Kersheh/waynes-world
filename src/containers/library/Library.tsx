@@ -118,16 +118,16 @@ const LibraryContainer = () => {
     if (filterQuery && !filterFavourite) {
       return albums.filter(
         album =>
-          album.artist.toLowerCase().includes(filterQuery) ||
-          album.album.toLowerCase().includes(filterQuery)
+          album.artist.toLowerCase().includes(filterQuery.toLowerCase()) ||
+          album.album.toLowerCase().includes(filterQuery.toLowerCase())
       );
     }
     if (filterQuery && filterFavourite) {
       return albums.filter(
         album =>
           album.favourite &&
-          (album.artist.toLowerCase().includes(filterQuery) ||
-            album.album.toLowerCase().includes(filterQuery))
+          (album.artist.toLowerCase().includes(filterQuery.toLowerCase()) ||
+            album.album.toLowerCase().includes(filterQuery.toLowerCase()))
       );
     }
     return albums;
