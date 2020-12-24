@@ -21,6 +21,21 @@
     text-align: left;
     margin-left: 12px;
 
+    &Wrapper {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      align-items: center;
+
+      > div:first-of-type {
+        flex: 10;
+      }
+
+      > div:last-of-type {
+        flex: 1;
+      }
+    }
+
     .album {
       font-weight: 700;
     }

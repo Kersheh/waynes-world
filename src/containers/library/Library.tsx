@@ -143,6 +143,7 @@ const LibraryContainer = () => {
               id={album.id}
               album={album.album}
               artist={album.artist}
+              isFavourite={album.favourite}
               key={`${album.album}-${index}`}
             />
           ))}

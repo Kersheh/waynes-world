@@ -14,17 +14,21 @@ exports[`<LibraryAlbum/> component should render 1`] = `
         draggable="false"
       />
       <div
-        class="info"
+        class="infoWrapper"
       >
         <div
-          class="album"
+          class="info"
         >
-          Album name
-        </div>
-        <div
-          class="artist"
-        >
-          Artist name
+          <div
+            class="album"
+          >
+            Album name
+          </div>
+          <div
+            class="artist"
+          >
+            Artist name
+          </div>
         </div>
       </div>
     </button>
