@@ -66,6 +66,12 @@
         border: solid $primary-grey 1px;
         background-color: $background-dark-grey;
       }
+
+      &Plus {
+        position: absolute;
+        left: 118px;
+        bottom: 8px;
+      }
     }
 
     .info {

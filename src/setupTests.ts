@@ -8,6 +8,11 @@ jest.mock('colorthief', () => ({
   default: jest.fn().mockImplementation(() => {})
 }));
 
+jest.mock('browser-image-compression', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => {})
+}));
+
 jest.mock('axios', () => ({
   get: () => Promise.resolve({ data: {} }),
   post: () => Promise.resolve({ data: {} }),

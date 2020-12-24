@@ -34,10 +34,11 @@ export const setNewAlbumWithSpotifyInfo = async (
 
   // fetch potential genre from spotify based on album then fallback to artist genre
   const albumInfo = await getSpotifyAlbumByID(album.id);
-  let genre = albumInfo?.data?.body?.genres[0] ?? null;
+  const genre = albumInfo?.data?.body?.genres[0] ?? null;
   const artistID = albumInfo?.data?.body?.artists[0]?.id ?? '';
   const artistInfo = genre || (await getSpotifyArtistByID(artistID));
-  genre = genre || startCase(artistInfo?.data?.body?.genres[0] ?? '');
+  const genreFormatted =
+    genre || startCase(artistInfo?.data?.body?.genres[0] ?? '');
 
   dispatch(
     setEditAlbumAction({
@@ -45,7 +46,7 @@ export const setNewAlbumWithSpotifyInfo = async (
         artist: album.artists[0].name,
         album: album.name,
         year: getYear(parseISO(album.release_date)),
-        genre,
+        genre: genreFormatted,
         shelf: '',
         comments: ''
       }

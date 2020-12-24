@@ -8,7 +8,9 @@ import TextInput from 'components/textInput/TextInput';
 import TextArea from 'components/textArea/TextArea';
 import Button from 'components/button/Button';
 import IconCaret from 'components/icons/IconCaret';
+import IconPlusOutline from 'components/icons/IconPlusOutline';
 import Image from 'components/image/Image';
+import FileUpload from 'components/fileUpload/FileUpload';
 import { saveUpdateAlbumAction, setEditAlbumAction } from '../addAlbumActions';
 import styles from './EditAlbum.module.scss';
 
@@ -79,13 +81,20 @@ const EditAlbum = ({
           <div className={styles.artInfo}>
             <div className={styles.art}>
               <div className={styles.artText}>Album Art</div>
-              {!editAlbumArt?.base64 && <div className={styles.artImage} />}
-              {editAlbumArt?.base64 && (
-                <Image
-                  className={styles.artImage}
-                  src={`data:image/jpeg;base64,${editAlbumArt.base64}`}
-                />
-              )}
+
+              <FileUpload>
+                {!editAlbumArt?.base64 && <div className={styles.artImage} />}
+                {editAlbumArt?.base64 && (
+                  <Image
+                    className={styles.artImage}
+                    src={editAlbumArt.base64}
+                  />
+                )}
+
+                <div className={styles.artPlus}>
+                  <IconPlusOutline />
+                </div>
+              </FileUpload>
             </div>
 
             <div className={styles.info}>

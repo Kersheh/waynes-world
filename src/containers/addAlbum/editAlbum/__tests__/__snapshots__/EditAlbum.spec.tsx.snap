@@ -59,8 +59,35 @@ exports[`<EditAlbum/> component should render 1`] = `
             Album Art
           </div>
           <div
-            class="artImage"
-          />
+            class="fileUpload"
+          >
+            <button
+              class="button basic"
+              type="button"
+            >
+              <input
+                type="file"
+              />
+              <div
+                class="artImage"
+              />
+              <div
+                class="artPlus"
+              >
+                <svg
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 10 h-10 v-10 h-2 v10 h-10 v2 h10 v10 h2 v-10 h10 z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
         </div>
         <div
           class="info"

@@ -31,12 +31,7 @@ const AlbumTile = ({ album, artist, id, createdAt }: AlbumTileProps) => {
     >
       <div className={styles.albumTile}>
         {!artBase64 && <div className={styles.art} draggable="false" />}
-        {artBase64 && (
-          <Image
-            className={styles.art}
-            src={`data:image/jpeg;base64,${artBase64}`}
-          />
-        )}
+        {artBase64 && <Image className={styles.art} src={artBase64} />}
 
         <div className={styles.tag}>
           <div className={styles.album}>{album}</div>

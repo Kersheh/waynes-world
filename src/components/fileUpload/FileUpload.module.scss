@@ -1,0 +1,11 @@
+.fileUpload {
+  position: relative;
+
+  > button {
+    padding: 0;
+
+    input {
+      display: none;
+    }
+  }
+}

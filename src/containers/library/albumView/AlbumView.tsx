@@ -39,10 +39,10 @@ const AlbumView = ({ album }: AlbumViewProps) => {
 
   // fetch potential album art from backend
   useEffect(() => {
-    if (album.id) {
+    if (album.id && !showEditAlbum && !editAlbumId) {
       fetchAlbumArt(album.id, setArtBase64);
     }
-  }, [album.id]);
+  }, [showEditAlbum, album.id, editAlbumId]);
 
   // set album edit view
   useEffect(() => {
@@ -148,7 +148,7 @@ const AlbumView = ({ album }: AlbumViewProps) => {
               {artBase64 && (
                 <Image
                   className={styles.artImg}
-                  src={`data:image/jpeg;base64,${artBase64}`}
+                  src={artBase64}
                   getImgDominantHexColor={setBackgroundColor}
                 />
               )}

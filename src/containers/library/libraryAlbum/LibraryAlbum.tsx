@@ -35,12 +35,7 @@ const LibraryAlbum = ({ id, album, artist }: LibraryAlbumProps) => {
         onClick={() => dispatch(setAlbumViewAction(id))}
       >
         {!artBase64 && <div className={styles.albumArt} draggable="false" />}
-        {artBase64 && (
-          <Image
-            className={styles.albumArt}
-            src={`data:image/jpeg;base64,${artBase64}`}
-          />
-        )}
+        {artBase64 && <Image className={styles.albumArt} src={artBase64} />}
 
         <div className={styles.info}>
           <div className={styles.album}>{album}</div>

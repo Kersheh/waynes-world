@@ -78,7 +78,7 @@ function* fetchExternalAlbumArtSaga(action: Action) {
 
   yield put(
     setEditAlbumArtAction({
-      base64,
+      base64: `data:image/jpeg;base64,${base64}`,
       url: action.data
     })
   );

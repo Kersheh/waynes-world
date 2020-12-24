@@ -7,5 +7,7 @@ export const fetchAlbumArt = async (
   setArtBase64: Dispatch<SetStateAction<string | null>>
 ) => {
   const { data } = await getAlbumArt(id);
-  setArtBase64(data?.albumArt ?? null);
+  setArtBase64(
+    data?.albumArt ? `data:image/jpeg;base64,${data.albumArt}` : null
+  );
 };
