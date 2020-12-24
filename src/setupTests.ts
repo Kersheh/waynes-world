@@ -7,3 +7,10 @@ jest.mock('colorthief', () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => {})
 }));
+
+jest.mock('axios', () => ({
+  get: () => Promise.resolve({ data: {} }),
+  post: () => Promise.resolve({ data: {} }),
+  put: () => Promise.resolve({ data: {} }),
+  delete: () => Promise.resolve({ data: {} })
+}));

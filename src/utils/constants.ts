@@ -1,6 +1,6 @@
 const constants = {
   config: {
-    API: 'http://192.168.86.30:3100'
+    API: `http://${process.env.REACT_APP_API_IP}:${process.env.REACT_APP_API_PORT}`
   }
 };
 

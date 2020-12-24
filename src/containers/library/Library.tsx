@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
+import { throttle } from 'lodash';
 
 import { RootState, Album } from 'types';
 import Button from 'components/button/Button';
@@ -22,6 +23,11 @@ const LibraryContainer = () => {
   const [sortBy, setSortBy] = useState('artist');
   const [sortOrder, setSortOrder] = useState('asc');
   const [filterQuery, setFilterQuery] = useState<string>('');
+  const [filterFavourite, setFilterFavourite] = useState(false);
+  const setFilterQueryThrottled = useCallback(
+    throttle((val: string) => setFilterQuery(val), 400),
+    []
+  );
 
   useEffect(() => {
     // clear album view on library exit
@@ -45,21 +51,32 @@ const LibraryContainer = () => {
   useEffect(() => {
     if (!activeAlbumId) {
       setFilterQuery('');
+      setFilterFavourite(false);
     }
   }, [activeAlbumId]);
 
-  // filter albums by artist or album from user filter search
-  const albumsFiltered = useMemo(
-    () =>
-      !filterQuery
-        ? albums
-        : albums.filter(
-            album =>
-              album.artist.toLowerCase().includes(filterQuery) ||
-              album.album.toLowerCase().includes(filterQuery)
-          ),
-    [filterQuery, albums]
-  );
+  // filter albums by artist or album from user filter search, and filter by favourite if enabled
+  const albumsFiltered = useMemo(() => {
+    if (!filterQuery && filterFavourite) {
+      return albums.filter(album => album.favourite);
+    }
+    if (filterQuery && !filterFavourite) {
+      return albums.filter(
+        album =>
+          album.artist.toLowerCase().includes(filterQuery) ||
+          album.album.toLowerCase().includes(filterQuery)
+      );
+    }
+    if (filterQuery && filterFavourite) {
+      return albums.filter(
+        album =>
+          album.favourite &&
+          (album.artist.toLowerCase().includes(filterQuery) ||
+            album.album.toLowerCase().includes(filterQuery))
+      );
+    }
+    return albums;
+  }, [filterQuery, albums, filterFavourite]);
 
   const setSort = (by: 'artist' | 'album' | 'genre' | 'createdAt') => {
     if (sortBy !== by) {
@@ -86,7 +103,11 @@ const LibraryContainer = () => {
       )}
       {!activeAlbumId && (
         <>
-          <LibraryFilter setFilterQuery={setFilterQuery} />
+          <LibraryFilter
+            setFilterQuery={setFilterQueryThrottled}
+            filterFavourite={filterFavourite}
+            setFilterFavourite={setFilterFavourite}
+          />
 
           <div className={styles.sortBtns}>
             <Button onClick={() => setSort('artist')}>
@@ -114,6 +135,8 @@ const LibraryContainer = () => {
               )}
             </Button>
           </div>
+
+          {albumsFiltered?.length === 0 && <p>No albums found.</p>}
 
           {albumsFiltered?.map((album, index) => (
             <LibraryAlbum
