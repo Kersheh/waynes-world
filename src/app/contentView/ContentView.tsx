@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import { RootState } from 'types';
@@ -9,17 +9,19 @@ import Error from 'containers/error/Error';
 import styles from './ContentView.module.scss';
 
 const ContentView = () => {
+  const contentRef = useRef<HTMLDivElement>(null);
   const { activeView } = useSelector((state: RootState) => state.app);
   const { message } = useSelector((state: RootState) => state.error);
 
-  // debug; reset store
-  // const dispatch = useDispatch();
-  // if (false) {
-  //   dispatch({ type: 'PURGE', key: 'root', result: () => null });
-  // }
+  // scroll to top on view change
+  useEffect(() => {
+    if (contentRef?.current?.scrollTo) {
+      contentRef.current.scrollTo(0, 0);
+    }
+  }, [activeView]);
 
   return (
-    <div className={styles.contentView}>
+    <div ref={contentRef} className={styles.contentView}>
       {activeView === 'home' && <Home />}
       {activeView === 'addAlbum' && <AddAlbum />}
       {activeView === 'library' && <Library />}
