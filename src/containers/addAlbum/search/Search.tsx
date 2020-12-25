@@ -134,13 +134,17 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
               ) : (
                 <>
                   {hasRecentlySearched && <h4>Recent search results...</h4>}
-                  <SearchResult
-                    artist={searchResults.artists[0]}
-                    onClick={() => setSearchSecondaryView('artistAlbums')}
-                  />
+                  {
+                    /* Disabled incomplete feature */ false && (
+                      <SearchResult
+                        artist={searchResults.artists[0]}
+                        onClick={() => setSearchSecondaryView('artistAlbums')}
+                      />
+                    )
+                  }
 
                   {searchResults.albums
-                    .slice(0, 5)
+                    .slice(0, 10)
                     .map((album: SpotifyAlbum, index: number) => (
                       <SearchResult
                         key={`${album.name}-${index}`}
@@ -152,16 +156,24 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                     ))}
 
                   <div className={styles.allResults}>
-                    <SearchResult
-                      isAllButton
-                      allButtonText="All artists"
-                      onClick={() => setSearchSecondaryView('allArtists')}
-                    />
-                    <SearchResult
-                      isAllButton
-                      allButtonText="All albums"
-                      onClick={() => setSearchSecondaryView('allAlbums')}
-                    />
+                    {
+                      /* Disabled incomplete feature */ false && (
+                        <SearchResult
+                          isAllButton
+                          allButtonText="All artists"
+                          onClick={() => setSearchSecondaryView('allArtists')}
+                        />
+                      )
+                    }
+                    {
+                      /* Disabled incomplete feature */ false && (
+                        <SearchResult
+                          isAllButton
+                          allButtonText="All albums"
+                          onClick={() => setSearchSecondaryView('allAlbums')}
+                        />
+                      )
+                    }
                   </div>
                 </>
               )}
