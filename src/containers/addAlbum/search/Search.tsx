@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { parseISO, getYear } from 'date-fns';
-import { startCase } from 'lodash';
+import { startCase, uniqWith, isEqual } from 'lodash';
 
 import { RootState, SpotifyAlbum } from 'types';
 import { getSpotifyAlbumByID, getSpotifyArtistByID } from 'services';
@@ -143,14 +143,19 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                     )
                   }
 
-                  {searchResults.albums
+                  {uniqWith(searchResults.albums, (x, y) =>
+                    isEqual(
+                      { name: x.name, artist: x.artists[0].name },
+                      { name: y.name, artist: y.artists[0].name }
+                    )
+                  )
                     .slice(0, 10)
                     .map((album: SpotifyAlbum, index: number) => (
                       <SearchResult
                         key={`${album.name}-${index}`}
                         album={album}
                         onClick={async () =>
-                          setNewAlbumWithSpotifyInfo(album, dispatch)
+                          await setNewAlbumWithSpotifyInfo(album, dispatch)
                         }
                       />
                     ))}

@@ -1,5 +1,7 @@
 {
   "name": "waynes-world",
+  "author": "Matt Breckon",
+  "license": "ISC",
   "version": "0.1.0",
   "private": true,
   "scripts": {
