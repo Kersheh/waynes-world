@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "REACT_APP_API_IP=`ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2` REACT_APP_API_PORT=3100 react-scripts start",
-    "build": "REACT_APP_API_IP=`ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2` REACT_APP_API_PORT=8700 react-scripts build",
+    "build": "REACT_APP_API_PORT=8700 react-scripts build",
     "test": "react-scripts test -u --watchAll=false",
     "test:watch": "react-scripts test",
     "lint": "eslint -c .eslintrc.yml 'src/**/*.{ts,tsx}' && stylelint --config .stylelintrc.yml 'src/**/*.scss'",
