@@ -108,7 +108,7 @@ const EditAlbum = ({
               <TextInput
                 name="album"
                 label="Album"
-                maxLength={50}
+                maxLength={100}
                 required
                 error={methods.errors?.album?.message}
               />
