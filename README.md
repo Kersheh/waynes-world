@@ -2,6 +2,12 @@
 
 Gift to my parents to organize their massive record collection, name inspired by my late great uncle Wayne. An iPhone 11 targeted digital record collection library web app.
 
+<img src="https://i.imgur.com/DYU9bdr.jpeg" width="320px" align="left" />
+<img src="https://i.imgur.com/0vxSSYf.png" width="320px" align="center" />
+
+<img src="https://i.imgur.com/bhSLkKc.png" width="320px" align="left" />
+<img src="https://i.imgur.com/HjDVIPM.png" width="320px" align="center" />
+
 # Scripts:
 
 ### `npm start`
