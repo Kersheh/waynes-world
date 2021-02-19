@@ -8,6 +8,9 @@ Gift to my parents to organize their massive record collection, name inspired by
 <img src="https://i.imgur.com/bhSLkKc.png" width="320px" align="left" />
 <img src="https://i.imgur.com/HjDVIPM.png" width="320px" align="center" />
 
+<img src="https://i.imgur.com/OFoyCqZ.png" width="320px" align="left" />
+<img src="https://i.imgur.com/bvJJFiZ.png" width="320px" align="center" />
+
 # Scripts:
 
 ### `npm start`
