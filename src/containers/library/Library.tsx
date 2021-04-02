@@ -54,8 +54,6 @@ const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
             break;
         }
 
-        console.log(sortMarker);
-
         return (
           <div key={`${album.album}-${index}`}>
             {sortMarker && (
