@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
-import { throttle } from 'lodash';
+import { throttle, flatten } from 'lodash';
+import fuzzysort from 'fuzzysort';
 
 import { RootState, Album } from 'types';
 import Button from 'components/button/Button';
@@ -17,7 +18,7 @@ const cx = classNames.bind(styles);
 
 interface LibraryListProps {
   albums: Array<Album>;
-  sortBy: 'artist' | 'album' | 'genre' | 'createdAt';
+  sortBy: 'artist' | 'album' | 'genre' | 'year';
 }
 const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
   let sortSplit = '';
@@ -45,7 +46,15 @@ const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
               sortMarker = true;
             }
             break;
+          case 'year':
+            if (sortSplit !== album.year?.toString()) {
+              sortSplit = album.year?.toString() ?? '';
+              sortMarker = true;
+            }
+            break;
         }
+
+        console.log(sortMarker);
 
         return (
           <div key={`${album.album}-${index}`}>
@@ -73,9 +82,9 @@ const LibraryContainer = () => {
   const { albums, activeAlbumId } = useSelector(
     (state: RootState) => state.library
   );
-  const [sortBy, setSortBy] = useState<
-    'artist' | 'album' | 'genre' | 'createdAt'
-  >('artist');
+  const [sortBy, setSortBy] = useState<'artist' | 'album' | 'genre' | 'year'>(
+    'artist'
+  );
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filterQuery, setFilterQuery] = useState<string>('');
   const [filterFavourite, setFilterFavourite] = useState(false);
@@ -89,7 +98,7 @@ const LibraryContainer = () => {
     return () => {
       dispatch(clearAlbumViewAction());
     };
-  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   useEffect(() => {
     if (!activeAlbumId) {
@@ -110,17 +119,33 @@ const LibraryContainer = () => {
     }
   }, [activeAlbumId]);
 
+  const albumsFuzzySortTargets = useMemo(
+    () =>
+      flatten(
+        albums.map(album => [
+          {
+            id: album.id,
+            text: `${album.artist.toLowerCase()} ${album.album.toLowerCase()}`
+          },
+          {
+            id: album.id,
+            text: `${album.album.toLowerCase()} ${album.artist.toLowerCase()}`
+          }
+        ])
+      ),
+    [albums]
+  );
+
   // filter albums by artist or album from user filter search, and filter by favourite if enabled
   const albumsFiltered = useMemo(() => {
     if (!filterQuery && filterFavourite) {
       return albums.filter(album => album.favourite);
     }
     if (filterQuery && !filterFavourite) {
-      return albums.filter(
-        album =>
-          album.artist.toLowerCase().includes(filterQuery.toLowerCase()) ||
-          album.album.toLowerCase().includes(filterQuery.toLowerCase())
-      );
+      const filterAlbumIds = fuzzysort
+        .go(filterQuery, albumsFuzzySortTargets, { keys: ['text'] })
+        .map(item => item.obj.id);
+      return albums.filter(album => filterAlbumIds.includes(album.id));
     }
     if (filterQuery && filterFavourite) {
       return albums.filter(
@@ -131,9 +156,9 @@ const LibraryContainer = () => {
       );
     }
     return albums;
-  }, [filterQuery, albums, filterFavourite]);
+  }, [filterQuery, albums, filterFavourite, albumsFuzzySortTargets]);
 
-  const setSort = (by: 'artist' | 'album' | 'genre' | 'createdAt') => {
+  const setSort = (by: 'artist' | 'album' | 'genre' | 'year') => {
     if (sortBy !== by) {
       setSortBy(by);
       setSortOrder('asc');
@@ -183,9 +208,9 @@ const LibraryContainer = () => {
                 <>{sortOrder === 'asc' ? <IconArrowUp /> : <IconArrowDown />}</>
               )}
             </Button>
-            <Button onClick={() => setSort('createdAt')}>
-              <span>Date Added</span>
-              {sortBy === 'createdAt' && (
+            <Button onClick={() => setSort('year')}>
+              <span>Year</span>
+              {sortBy === 'year' && (
                 <>{sortOrder === 'asc' ? <IconArrowUp /> : <IconArrowDown />}</>
               )}
             </Button>

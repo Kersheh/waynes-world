@@ -2,7 +2,7 @@
   "name": "waynes-world",
   "author": "Matt Breckon",
   "license": "ISC",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "start": "REACT_APP_API_IP=`ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\\  -f2` REACT_APP_API_PORT=3100 react-scripts start",
@@ -31,6 +31,7 @@
     "classnames": "^2.2.6",
     "colorthief": "^2.3.2",
     "date-fns": "^2.16.1",
+    "fuzzysort": "^1.1.4",
     "lodash": "^4.17.20",
     "mutationobserver-shim": "^0.3.7",
     "node-sass": "^4.14.1",

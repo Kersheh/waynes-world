@@ -127,7 +127,7 @@ exports[`<EditAlbum/> component should render 1`] = `
             </div>
             <input
               class=""
-              maxlength="50"
+              maxlength="100"
               name="album"
               required=""
               type="text"
@@ -137,7 +137,7 @@ exports[`<EditAlbum/> component should render 1`] = `
             >
               0
                / 
-              50
+              100
             </div>
           </div>
         </div>

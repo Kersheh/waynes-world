@@ -89,7 +89,7 @@ exports[`<Library/> component should render 1`] = `
         type="button"
       >
         <span>
-          Date Added
+          Year
         </span>
       </button>
     </div>

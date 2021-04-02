@@ -154,8 +154,8 @@ const Search = ({ showSearch, setShowSearch }: SearchProps) => {
                       <SearchResult
                         key={`${album.name}-${index}`}
                         album={album}
-                        onClick={async () =>
-                          await setNewAlbumWithSpotifyInfo(album, dispatch)
+                        onClick={() =>
+                          setNewAlbumWithSpotifyInfo(album, dispatch)
                         }
                       />
                     ))}
