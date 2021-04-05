@@ -24,7 +24,7 @@ const ContentView = () => {
     <div ref={contentRef} className={styles.contentView}>
       {activeView === 'home' && <Home />}
       {activeView === 'addAlbum' && <AddAlbum />}
-      {activeView === 'library' && <Library />}
+      {activeView === 'library' && <Library contentViewRef={contentRef} />}
 
       {message && <Error message={message} />}
     </div>

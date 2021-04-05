@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+  RefObject
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import { throttle, flatten } from 'lodash';
@@ -19,8 +25,13 @@ const cx = classNames.bind(styles);
 interface LibraryListProps {
   albums: Array<Album>;
   sortBy: 'artist' | 'album' | 'genre' | 'year';
+  albumViewOnClick: () => void;
 }
-const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
+const LibraryList = ({
+  albums,
+  sortBy,
+  albumViewOnClick
+}: LibraryListProps) => {
   let sortSplit = '';
 
   return (
@@ -67,6 +78,7 @@ const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
               album={album.album}
               artist={album.artist}
               isFavourite={album.favourite}
+              onClick={albumViewOnClick}
             />
           </div>
         );
@@ -75,7 +87,10 @@ const LibraryList = ({ albums, sortBy }: LibraryListProps) => {
   );
 };
 
-const LibraryContainer = () => {
+interface LibraryProps {
+  contentViewRef: RefObject<HTMLDivElement>;
+}
+const LibraryContainer = ({ contentViewRef }: LibraryProps) => {
   const dispatch = useDispatch();
   const { albums, activeAlbumId } = useSelector(
     (state: RootState) => state.library
@@ -86,6 +101,7 @@ const LibraryContainer = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [filterQuery, setFilterQuery] = useState<string>('');
   const [filterFavourite, setFilterFavourite] = useState(false);
+  const [libaryScrollPosition, setLibraryScrollPosition] = useState(0);
   const setFilterQueryThrottled = useCallback(
     throttle((val: string) => setFilterQuery(val), 400),
     []
@@ -109,13 +125,14 @@ const LibraryContainer = () => {
     }
   }, [dispatch, sortBy, sortOrder]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // reset search filter when leaving album view
+  // reset search filter when leaving album view and reset scroll position of library on album exit
   useEffect(() => {
     if (!activeAlbumId) {
       setFilterQuery('');
       setFilterFavourite(false);
+      contentViewRef?.current?.scrollTo(0, libaryScrollPosition);
     }
-  }, [activeAlbumId]);
+  }, [activeAlbumId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const albumsFuzzySortTargets = useMemo(
     () =>
@@ -216,7 +233,13 @@ const LibraryContainer = () => {
 
           {albumsFiltered?.length === 0 && <p>No albums found.</p>}
 
-          <LibraryList albums={albumsFiltered} sortBy={sortBy} />
+          <LibraryList
+            albums={albumsFiltered}
+            sortBy={sortBy}
+            albumViewOnClick={() =>
+              setLibraryScrollPosition(contentViewRef?.current?.scrollTop ?? 0)
+            }
+          />
         </>
       )}
     </div>

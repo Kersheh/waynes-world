@@ -13,12 +13,14 @@ interface LibraryAlbumProps {
   id: string;
   album: string;
   artist: string;
+  onClick: () => void;
   isFavourite?: boolean;
 }
 const LibraryAlbum = ({
   id,
   album,
   artist,
+  onClick,
   isFavourite
 }: LibraryAlbumProps) => {
   const dispatch = useDispatch();
@@ -39,7 +41,10 @@ const LibraryAlbum = ({
     <div className={styles.libraryAlbum} ref={visibleRef}>
       <Button
         styleType="listItem"
-        onClick={() => dispatch(setAlbumViewAction(id))}
+        onClick={() => {
+          onClick();
+          dispatch(setAlbumViewAction(id));
+        }}
       >
         {!artBase64 && <div className={styles.albumArt} draggable="false" />}
         {artBase64 && <Image className={styles.albumArt} src={artBase64} />}
